@@ -4,6 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="referrer"
+    content="strict-origin-when-cross-origin"
+><meta
+    http-equiv="Content-Security-Policy"
+    content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self';
+        img-src 'self' data:;
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        upgrade-insecure-requests;
+    "
+>
 
     <title>MD Web Studio | Criação de Sites</title>
 
@@ -440,11 +456,12 @@
 
         <div class="contato-botoes">
 
-            <a href="https://www.instagram.com/murilloou0/"
-               target="_blank"
-               class="botao">
-                FALAR COM O MD
-            </a>
+          <a href="https://wa.me/5521990487662?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20MD%20Web%20Studio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+   target="_blank"
+   rel="noopener noreferrer"
+   class="botao">
+    FALAR NO WHATSAPP
+</a>
 
         </div>
 
@@ -466,6 +483,76 @@
 
     </footer>
   
+<!-- ASSISTENTE MD -->
+<div class="assistente-md">
+
+<div class="convite-assistente" id="conviteAssistente">
+    👋 Oi! Posso te ajudar?
+</div>
+
+ <span class="assistente-etiqueta">
+    Fale com o Assistente MD
+</span>
+ 
+    <button class="assistente-botao" id="abrirAssistente">
+
+    <span class="assistente-logo">
+        MD
+    </span>
+
+    <span class="assistente-status"></span>
+
+</button>
+
+    <div class="assistente-janela" id="janelaAssistente">
+
+        <div class="assistente-cabecalho">
+            <div>
+                <strong>Assistente MD</strong>
+                <span>Online</span>
+            </div>
+
+            <button id="fecharAssistente">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="assistente-mensagens" id="mensagensAssistente">
+
+    <div class="mensagem-robo">
+        👋 Olá! Sou o assistente da MD Web Studio.
+        Como posso te ajudar?
+    </div>
+
+</div>
+
+<div class="assistente-opcoes" id="opcoesAssistente">
+
+    <button data-acao="criar">
+        Quero criar um site
+    </button>
+
+    <button data-acao="planos">
+        Conhecer os planos
+    </button>
+
+    <button data-acao="servicos">
+        Ver os serviços
+    </button>
+
+    <button data-acao="contato">
+        Falar com o MD
+    </button>
+
+</div>
+
+        </div>
+
+    </div>
+
+</div>
+
     <script src="script.js"></script>
 
 </body>
