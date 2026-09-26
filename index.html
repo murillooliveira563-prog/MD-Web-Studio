@@ -1,559 +1,12696 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta
+
     name="referrer"
+
     content="strict-origin-when-cross-origin"
-><meta
-    http-equiv="Content-Security-Policy"
-    content="
-        default-src 'self';
-        script-src 'self';
-        style-src 'self';
-        img-src 'self' data:;
-        font-src 'self';
-        object-src 'none';
-        base-uri 'self';
-        upgrade-insecure-requests;
-    "
+
 >
+
+
 
     <title>MD Web Studio | Criação de Sites</title>
 
-   <link rel="stylesheet" href="style.css">
+
+
+   <style>
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #080808;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==============================
+   CABEÇALHO
+================================= */
+
+.cabecalho {
+    width: 100%;
+    min-height: 80px;
+
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(5, 5, 5, 0.92);
+
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    color: #d4af37;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 18px rgba(212, 175, 55, 0.18);
+
+    white-space: nowrap;
+}
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+.menu a {
+    position: relative;
+
+    color: #d0d0d0;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    padding: 8px 0;
+
+    transition: 0.3s ease;
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: #d4af37;
+
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    color: #d4af37;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* LINK ATIVO DO MENU */
+
+.menu a.ativo {
+    color: #d4af37;
+}
+
+.menu a.ativo::after {
+    width: 100%;
+}
+
+/* ==============================
+   INÍCIO
+================================= */
+
+.inicio {
+    background:
+    radial-gradient(
+        circle at 50% 40%,
+        rgba(212, 175, 55, 0.12),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at 20% 80%,
+        rgba(212, 175, 55, 0.05),
+        transparent 30%
+    ),
+    linear-gradient(
+        135deg,
+        #050505 0%,
+        #0d0d0d 50%,
+        #050505 100%
+    );
+}
+
+.subtitulo {
+    color: #d4af37;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.inicio h1 {
+    color: #d4af37;
+    font-size: 90px;
+    font-weight: 900;
+    letter-spacing: 14px;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.8);
+}
+
+.descricao {
+    color: #dddddd;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ==============================
+   BOTÕES
+================================= */
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.botao {
+    display: inline-block;
+
+    background-color: #d4af37;
+    color: #080808;
+
+    padding: 16px 32px;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+
+    border-radius: 5px;
+
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.25);
+
+    transition: 0.3s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.botao::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+.botao:hover::before {
+    left: 140%;
+}
+
+.botao:hover {
+    background-color: #f5c518;
+    transform: translateY(-3px);
+}
+
+.botao-secundario {
+    background-color: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
+
+/* ==============================
+   RODAPÉ
+================================= */
+
+footer {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background-color: #050505;
+
+    border-top: 1px solid #292929;
+}
+
+footer p {
+    color: #777777;
+    font-size: 14px;
+}
+
+/* ==============================
+   UPGRADE — PÁGINA INICIAL
+================================= */
+
+.inicio {
+    position: relative;
+    overflow: hidden;
+
+    min-height: calc(100vh - 80px);
+    padding: 100px 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+.inicio::before {
+    content: "";
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212, 175, 55, 0.14),
+            rgba(212, 175, 55, 0.04) 35%,
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation: brilhoInicio 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+.inicio::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(212, 175, 55, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(212, 175, 55, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        radial-gradient(
+            circle at center,
+            black,
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+@keyframes brilhoInicio {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.6;
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            scale(1.15);
+
+        opacity: 1;
+    }
+
+}
+
+.inicio-conteudo {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    animation: entradaInicio 1s ease;
+}
+
+.inicio h1 {
+    font-size: clamp(70px, 10vw, 110px);
+
+    font-weight: 900;
+
+    letter-spacing: clamp(8px, 2vw, 18px);
+
+    color: transparent;
+
+    background: linear-gradient(
+    110deg,
+    #b98b1d 0%,
+    #d4af37 25%,
+    #fff2a8 48%,
+    #e4bd42 65%,
+    #a97d18 100%
+);
+
+    background-size: 220% auto;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(0 0 12px rgba(212, 175, 55, 0.20))
+        drop-shadow(0 8px 25px rgba(0, 0, 0, 0.8));
+
+    animation: brilhoMD 6s linear infinite;
+}
+
+@keyframes brilhoMD {
+
+    0% {
+        background-position: 200% center;
+    }
+
+    100% {
+        background-position: -20% center;
+    }
+
+}
+
+.subtitulo {
+    text-shadow:
+        0 0 15px rgba(212, 175, 55, 0.25);
+}
+
+.descricao {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 21px;
+}
+
+.inicio .botao {
+    min-width: 190px;
+
+    padding: 17px 30px;
+
+    border-radius: 8px;
+
+    letter-spacing: 0.5px;
+}
+
+.inicio .botao-secundario {
+    background: rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(5px);
+}
+
+.inicio .botao:hover {
+    box-shadow:
+        0 10px 30px rgba(212, 175, 55, 0.30);
+}
+
+@keyframes entradaInicio {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==============================
+   MD WEB STUDIO — SERVIÇOS
+================================= */
+
+.servicos {
+    min-height: 650px;
+
+    padding: 100px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.06),
+            #080808 65%
+        );
+}
+
+.servicos-conteudo {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.servicos h2 {
+    color: #d4af37;
+
+    font-size: clamp(38px, 6vw, 55px);
+
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+}
+
+.descricao-servicos {
+    max-width: 650px;
+
+    margin: 0 auto 50px;
+
+    color: #bdbdbd;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+.servicos-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.servico {
+    padding: 35px 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0d0d0d
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.18);
+
+    border-radius: 18px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.servico:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(212, 175, 55, 0.7);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+.servico span {
+    display: block;
+
+    font-size: 38px;
+
+    margin-bottom: 20px;
+}
+
+.servico h3 {
+    color: #d4af37;
+
+    font-size: 20px;
+
+    margin-bottom: 12px;
+}
+
+.servico p {
+    color: #999999;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   SERVIÇOS — CELULAR
+================================= */
+
+@media (max-width: 800px) {
+
+    .servicos {
+        padding: 80px 20px;
+    }
+
+    .servicos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 400px;
+
+        margin: 0 auto;
+    }
+
+    .servico {
+        padding: 30px 20px;
+    }
+
+}
+
+/* ==============================
+   MD WEB STUDIO — PORTFÓLIO
+================================= */
+
+/* ==============================
+   PORTFÓLIO
+================================= */
+
+.portfolio {
+    min-height: 700px;
+    padding: 110px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0d0d0d,
+            #080808
+        );
+}
+
+.portfolio-conteudo {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.portfolio h2 {
+    color: #d4af37;
+
+    font-size: clamp(38px, 6vw, 55px);
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.12);
+}
+
+.descricao-portfolio {
+    max-width: 650px;
+
+    margin: 0 auto 55px;
+
+    color: #bdbdbd;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* ==============================
+   PROJETO
+================================= */
+
+.portfolio-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+.projeto {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    overflow: hidden;
+
+    text-align: left;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #0c0c0c
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.22);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.40);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.projeto:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(212, 175, 55, 0.70);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.50),
+        0 0 30px rgba(212, 175, 55, 0.08);
+}
+
+
+/* ==============================
+   ÁREA VISUAL
+================================= */
+
+.projeto-imagem {
+    position: relative;
+
+    min-height: 380px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b2d06 0%,
+            #171300 35%,
+            #080808 75%
+        );
+}
+
+.projeto-imagem::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(212, 175, 55, 0.10);
+
+    filter: blur(75px);
+}
+
+.projeto-imagem::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border: 1px solid rgba(212, 175, 55, 0.10);
+
+    border-radius: 16px;
+
+    pointer-events: none;
+}
+
+
+/* ==============================
+   IDENTIDADE DO PROJETO
+================================= */
+
+.projeto-logo {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.projeto-logo span {
+    color: #d4af37;
+
+    font-size: 52px;
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    text-shadow:
+        0 0 25px rgba(212, 175, 55, 0.25),
+        0 5px 20px rgba(0, 0, 0, 0.8);
+}
+
+.projeto-logo small {
+    margin-top: 12px;
+
+    color: #888888;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+/* ==============================
+   CONTEÚDO
+================================= */
+
+.projeto-conteudo {
+    padding: 45px 38px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.projeto-categoria {
+    color: #d4af37;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 16px;
+}
+
+.projeto h3 {
+    color: #ffffff;
+
+    font-size: 27px;
+
+    line-height: 1.3;
+
+    margin-bottom: 18px;
+}
+
+.projeto-conteudo > p:not(.projeto-categoria) {
+    color: #999999;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+    margin-bottom: 28px;
+}
+
+.projeto .botao {
+    align-self: flex-start;
+
+    padding: 14px 24px;
+
+    font-size: 13px;
+
+    border-radius: 8px;
+}
+
+
+/* ==============================
+   CELULAR
+================================= */
+
+@media (max-width: 700px) {
+
+    .portfolio {
+        padding: 80px 20px;
+    }
+
+    .descricao-portfolio {
+        font-size: 16px;
+
+        margin-bottom: 45px;
+    }
+
+    .projeto {
+        grid-template-columns: 1fr;
+
+        border-radius: 18px;
+    }
+
+    .projeto-imagem {
+        min-height: 240px;
+    }
+
+    .projeto-imagem::after {
+        inset: 15px;
+    }
+
+    .projeto-logo span {
+        font-size: 38px;
+
+        letter-spacing: 6px;
+    }
+
+    .projeto-logo small {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+    .projeto-conteudo {
+        padding: 32px 25px;
+    }
+
+    .projeto h3 {
+        font-size: 23px;
+    }
+
+    .projeto-conteudo > p:not(.projeto-categoria) {
+        font-size: 14px;
+    }
+
+    .projeto .botao {
+        width: 100%;
+
+        text-align: center;
+    }
+}
+
+/* ==============================
+   MD WEB STUDIO — SOBRE
+================================= */
+
+/* ==============================
+   SOBRE
+================================= */
+
+.sobre {
+    min-height: 650px;
+
+    padding: 110px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(212, 175, 55, 0.06),
+            transparent 35%
+        ),
+        #080808;
+}
+
+.sobre-conteudo {
+    width: 100%;
+    max-width: 1050px;
+
+    display: grid;
+
+    grid-template-columns: 1.15fr 0.85fr;
+
+    gap: 75px;
+
+    align-items: center;
+}
+
+
+/* ==============================
+   TEXTO
+================================= */
+
+.sobre-texto h2 {
+    color: #d4af37;
+
+    font-size: clamp(38px, 5vw, 52px);
+
+    line-height: 1.15;
+
+    margin-bottom: 28px;
+
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.10);
+}
+
+.sobre-texto p:not(.titulo-pequeno) {
+    max-width: 620px;
+
+    color: #bdbdbd;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+.sobre-texto .botao {
+    margin-top: 15px;
+
+    padding: 16px 28px;
+
+    border-radius: 8px;
+}
+
+
+/* ==============================
+   DESTAQUES
+================================= */
+
+.sobre-destaque {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.destaque {
+    min-height: 155px;
+
+    padding: 25px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #0c0c0c
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.20);
+
+    border-radius: 18px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.destaque:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(212, 175, 55, 0.65);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.40),
+        0 0 25px rgba(212, 175, 55, 0.07);
+}
+
+.destaque strong {
+    color: #d4af37;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+.destaque span {
+    color: #999999;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+/* ==============================
+   CONTATO
+================================= */
+
+.contato {
+    min-height: 600px;
+
+    padding: 110px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.12),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #0d0d0d,
+            #080808
+        );
+}
+
+.contato-conteudo {
+    width: 100%;
+    max-width: 800px;
+}
+
+.contato h2 {
+    color: #d4af37;
+
+    font-size: clamp(38px, 6vw, 58px);
+
+    line-height: 1.1;
+
+    margin-bottom: 28px;
+
+    text-shadow:
+        0 0 25px rgba(212, 175, 55, 0.12);
+}
+
+.contato-conteudo > p:not(.titulo-pequeno):not(.contato-final) {
+    max-width: 650px;
+
+    margin: 0 auto 40px;
+
+    color: #bdbdbd;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   BOTÃO
+================================= */
+
+.contato-botoes {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 35px;
+}
+
+.contato .botao {
+    min-width: 240px;
+
+    padding: 18px 32px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 12px 35px rgba(212, 175, 55, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contato .botao:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 40px rgba(212, 175, 55, 0.28);
+}
+
+
+/* ==============================
+   FRASE FINAL
+================================= */
+
+.contato-final {
+    color: #666666;
+
+    font-size: 14px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* ==============================
+   CELULAR
+================================= */
+
+@media (max-width: 500px) {
+
+    .contato {
+        min-height: 550px;
+
+        padding: 80px 20px;
+    }
+
+    .contato h2 {
+        font-size: 38px;
+    }
+
+    .contato-conteudo > p:not(.titulo-pequeno):not(.contato-final) {
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+
+    .contato-botoes {
+        flex-direction: column;
+    }
+
+    .contato .botao {
+        width: 100%;
+
+        min-width: auto;
+    }
+
+}
+/* ==============================
+   AJUSTES GERAIS — CELULAR
+================================= */
+
+@media (max-width: 700px) {
+
+    /* MENU */
+
+    .cabecalho {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+        letter-spacing: 4px;
+    }
+
+     .menu {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+
+    /* INÍCIO */
+
+    .inicio {
+        min-height: 650px;
+        padding: 80px 20px;
+    }
+
+    .inicio-conteudo {
+        width: 100%;
+    }
+
+    .inicio h1 {
+        font-size: 70px;
+    }
+
+    .descricao {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .botoes {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .botoes .botao {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* SERVIÇOS */
+
+    .servicos {
+        padding: 80px 20px;
+    }
+
+    .servicos-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .servico {
+        padding: 30px 22px;
+    }
+
+
+    /* PLANOS */
+
+    .planos-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .plano {
+        width: 100%;
+    }
+
+
+    /* PORTFÓLIO */
+
+    .portfolio {
+        padding: 80px 20px;
+    }
+
+    .portfolio-grid {
+        width: 100%;
+    }
+
+    .projeto {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* SOBRE */
+
+    .sobre {
+        padding: 80px 20px;
+    }
+
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .sobre-texto {
+        text-align: center;
+    }
+
+    .sobre-destaque {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+/* ==============================
+   PLANOS
+================================= */
+
+.planos {
+    min-height: 700px;
+    padding: 110px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.08),
+            #080808 65%
+        );
+}
+
+.planos-conteudo {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.planos h2 {
+    color: #d4af37;
+    font-size: clamp(38px, 6vw, 55px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.12);
+}
+
+.descricao-planos {
+    max-width: 650px;
+
+    margin: 0 auto 55px;
+
+    color: #bdbdbd;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* ==============================
+   GRID
+================================= */
+
+.planos-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+/* ==============================
+   CARD
+================================= */
+
+.plano {
+    position: relative;
+
+    padding: 42px 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #0c0c0c
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.18);
+
+    border-radius: 20px;
+
+    text-align: left;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.plano:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(212, 175, 55, 0.65);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(212, 175, 55, 0.10);
+}
+
+
+/* ==============================
+   PLANO DESTAQUE
+================================= */
+
+.plano-destaque {
+    border-color: rgba(212, 175, 55, 0.70);
+
+    transform: translateY(-12px);
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.40),
+        0 0 35px rgba(212, 175, 55, 0.12);
+}
+
+.plano-destaque::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        inset 0 0 25px rgba(212, 175, 55, 0.05),
+        0 0 25px rgba(212, 175, 55, 0.08);
+
+    pointer-events: none;
+
+    animation: pulsoPlano 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulsoPlano {
+
+    from {
+        box-shadow:
+            inset 0 0 15px rgba(212, 175, 55, 0.04),
+            0 0 15px rgba(212, 175, 55, 0.05);
+    }
+
+    to {
+        box-shadow:
+            inset 0 0 30px rgba(212, 175, 55, 0.09),
+            0 0 35px rgba(212, 175, 55, 0.14);
+    }
+
+}
+
+.plano-destaque .plano-icone {
+    animation: flutuarIcone 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes flutuarIcone {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
+
+}
+
+.plano-destaque::before {
+    content: "MAIS ESCOLHIDO";
+
+    position: absolute;
+
+    top: -13px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 6px 16px;
+
+    background: #d4af37;
+    color: #080808;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    white-space: nowrap;
+}
+
+.plano-destaque:hover {
+    transform: translateY(-18px);
+}
+
+
+/* ==============================
+   ÍCONE
+================================= */
+
+.plano-icone {
+    display: block;
+
+    font-size: 38px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==============================
+   TÍTULO
+================================= */
+
+.plano h3 {
+    color: #d4af37;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   DESCRIÇÃO
+================================= */
+
+.plano > p {
+    color: #999999;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==============================
+   LISTA
+================================= */
+
+.plano ul {
+    list-style: none;
+
+    margin: 0 0 30px;
+
+    padding: 0;
+}
+
+.plano li {
+    color: #c8c8c8;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    padding: 9px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* ==============================
+   BOTÃO
+================================= */
+
+.plano .botao {
+    margin-top: auto;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 15px 20px;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.plano .botao:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(212, 175, 55, 0.25);
+}
+
+
+/* ==============================
+   TABLET / CELULAR
+================================= */
+
+@media (max-width: 850px) {
+
+    .planos {
+        padding: 90px 20px;
+    }
+
+    .planos-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
+
+        margin: 0 auto;
+
+        gap: 30px;
+    }
+
+    .plano-destaque {
+        transform: none;
+    }
+
+    .plano-destaque:hover {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+/* ==============================
+   CELULAR
+================================= */
+
+@media (max-width: 500px) {
+
+    .planos {
+        padding: 80px 20px;
+    }
+
+    .planos h2 {
+        font-size: 38px;
+    }
+
+    .descricao-planos {
+        font-size: 16px;
+
+        margin-bottom: 45px;
+    }
+
+    .plano {
+        padding: 35px 22px;
+    }
+
+    .plano h3 {
+        font-size: 23px;
+    }
+
+    .plano li {
+        font-size: 13px;
+    }
+
+}
+
+/* ==============================
+   ANIMAÇÕES DOS ELEMENTOS
+================================= */
+
+.servico,
+.plano,
+.projeto,
+.destaque {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==============================
+   ASSISTENTE MD
+================================= */
+
+.assistente-md {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 2000;
+}
+
+
+/* BOTÃO FLUTUANTE */
+
+.assistente-botao {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #a77d17
+        );
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(212, 175, 55, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.assistente-botao:hover {
+    transform: translateY(-5px) scale(1.05);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(212, 175, 55, 0.30);
+}
+
+
+/* JANELA DO ASSISTENTE */
+
+.assistente-janela {
+    width: 350px;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 80px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #161616,
+            #090909
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.65),
+        0 0 30px rgba(212, 175, 55, 0.08);
+
+    display: none;
+}
+
+
+/* CABEÇALHO */
+
+.assistente-cabecalho {
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(212, 175, 55, 0.10),
+            transparent
+        );
+
+    border-bottom:
+        1px solid rgba(212, 175, 55, 0.15);
+}
+
+.assistente-cabecalho div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.assistente-cabecalho strong {
+    color: #d4af37;
+
+    font-size: 15px;
+}
+
+.assistente-cabecalho span {
+    color: #7fca8a;
+
+    font-size: 11px;
+}
+
+
+/* BOTÃO FECHAR */
+
+#fecharAssistente {
+    background: transparent;
+
+    border: none;
+
+    color: #888888;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#fecharAssistente:hover {
+    color: #d4af37;
+
+    transform: rotate(90deg);
+}
+
+
+/* CONVERSA */
+
+.assistente-conversa {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* MENSAGEM DO ROBÔ */
+
+.mensagem-robo {
+    padding: 14px 15px;
+
+    margin-bottom: 5px;
+
+    background: #202020;
+
+    color: #d0d0d0;
+
+    border-left: 3px solid #d4af37;
+
+    border-radius: 4px 12px 12px 12px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* OPÇÕES */
+
+.assistente-opcoes button {
+    width: 100%;
+
+    padding: 12px 15px;
+
+    background: rgba(212, 175, 55, 0.06);
+
+    color: #d4af37;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.20);
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.assistente-opcoes button:hover {
+    background: #d4af37;
+
+    color: #080808;
+
+    transform: translateX(4px);
+}
+
+.assistente-opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.assistente-opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* ==============================
+   CAMPO "OUTRO" DO ASSISTENTE
+================================= */
+
+.assistente-opcoes input {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #141414,
+            #0d0d0d
+        );
+
+    color: #ffffff;
+
+    border:
+        1px solid rgba(212, 175, 55, 0.25);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    font-family: inherit;
+
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.35);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.assistente-opcoes input::placeholder {
+    color: #666666;
+}
+
+.assistente-opcoes input:hover {
+    border-color:
+        rgba(212, 175, 55, 0.45);
+}
+
+.assistente-opcoes input:focus {
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 3px rgba(212, 175, 55, 0.08),
+        0 0 18px rgba(212, 175, 55, 0.12),
+        inset 0 2px 8px rgba(0, 0, 0, 0.35);
+
+    transform: translateY(-1px);
+}
+
+.assistente-opcoes input + button {
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.14),
+            rgba(212, 175, 55, 0.05)
+        );
+}
+
+/* CELULAR */
+
+@media (max-width: 500px) {
+
+    .assistente-md {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .assistente-botao {
+        width: 58px;
+        height: 58px;
+
+        font-size: 25px;
+    }
+
+    .assistente-janela {
+        width: calc(100vw - 30px);
+
+        right: 0;
+        bottom: 72px;
+    }
+
+}
+
+.assistente-janela.aberta {
+    display: block;
+
+    animation: abrirAssistente 0.3s ease;
+}
+
+@keyframes abrirAssistente {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* ==============================
+   ÁREA DE MENSAGENS DO ASSISTENTE
+================================= */
+
+.assistente-mensagens {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-height: 260px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+}
+
+
+/* MENSAGEM DO CLIENTE */
+
+.mensagem-cliente {
+    align-self: flex-end;
+
+    max-width: 85%;
+
+    padding: 11px 14px;
+
+    background: #d4af37;
+
+    color: #080808;
+
+    border-radius: 12px 4px 12px 12px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* MENSAGEM DO ROBÔ */
+
+.mensagem-robo {
+    align-self: flex-start;
+
+    max-width: 90%;
+}
+
+/* ==============================
+   DETALHES VISUAIS DO ASSISTENTE
+================================= */
+
+.assistente-cabecalho span {
+    position: relative;
+    padding-left: 12px;
+}
+
+.assistente-cabecalho span::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #55d66b;
+
+    transform: translateY(-50%);
+
+    box-shadow:
+        0 0 10px rgba(85, 214, 107, 0.6);
+}
+
+
+/* SCROLLBAR DO CHAT */
+
+.assistente-mensagens::-webkit-scrollbar {
+    width: 5px;
+}
+
+.assistente-mensagens::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.assistente-mensagens::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.35);
+
+    border-radius: 20px;
+}
+
+.assistente-mensagens::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.65);
+}
+
+@keyframes pulsoAssistente {
+
+    0% {
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.45),
+            0 0 0 0 rgba(212, 175, 55, 0.28);
+    }
+
+    70% {
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.45),
+            0 0 0 14px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.45),
+            0 0 0 0 rgba(212, 175, 55, 0);
+    }
+
+}
+
+.assistente-botao {
+    animation: pulsoAssistente 2.8s ease-out infinite;
+}
+
+/* ==============================
+   UPGRADE VISUAL DO CHAT
+================================= */
+
+/* CABEÇALHO MAIS PREMIUM */
+
+.assistente-cabecalho {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.14),
+            rgba(255, 255, 255, 0.02)
+        );
+
+    box-shadow:
+        inset 0 -1px 0 rgba(212, 175, 55, 0.08);
+}
+
+
+/* BALÃO DO ROBÔ */
+
+.mensagem-robo {
+    background:
+        linear-gradient(
+            145deg,
+            #202020,
+            #151515
+        );
+
+    border:
+        1px solid rgba(212, 175, 55, 0.10);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+
+    animation:
+        entradaMensagem 0.3s ease;
+}
+
+
+/* BALÃO DO CLIENTE */
+
+.mensagem-cliente {
+    background:
+        linear-gradient(
+            135deg,
+            #e0bb44,
+            #b98b1d
+        );
+
+    box-shadow:
+        0 8px 20px rgba(212, 175, 55, 0.16);
+
+    animation:
+        entradaMensagem 0.3s ease;
+}
+
+
+/* ANIMAÇÃO DAS MENSAGENS */
+
+@keyframes entradaMensagem {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* TEXTO "DIGITANDO..." */
+
+.digitando {
+    font-style: italic;
+
+    color: #8f8f8f;
+
+    font-size: 12px;
+}
+
+/* ==============================
+   BOTÕES DO ASSISTENTE
+================================= */
+
+.assistente-opcoes button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    overflow: hidden;
+}
+
+.assistente-opcoes button::after {
+    content: "→";
+
+    opacity: 0;
+
+    transform: translateX(-6px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.assistente-opcoes button:hover::after {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+.assistente-opcoes button:hover {
+    padding-left: 18px;
+}
+
+/* ==============================
+   IDENTIDADE DO BOTÃO MD
+================================= */
+
+.assistente-botao {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.assistente-logo {
+    color: #080808;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.assistente-status {
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    right: 2px;
+    bottom: 4px;
+
+    border-radius: 50%;
+
+    background: #55d66b;
+
+    border: 2px solid #080808;
+
+    box-shadow:
+        0 0 10px rgba(85, 214, 107, 0.7);
+}
+
+/* ==============================
+   ETIQUETA DO ASSISTENTE
+================================= */
+
+.assistente-etiqueta {
+    position: absolute;
+
+    right: 78px;
+    bottom: 14px;
+
+    padding: 10px 14px;
+
+    background: #151515;
+
+    color: #d4af37;
+
+    border: 1px solid rgba(212, 175, 55, 0.22);
+
+    border-radius: 9px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: translateX(8px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* MOSTRA QUANDO PASSA O MOUSE */
+
+.assistente-md:hover .assistente-etiqueta {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+/* ==============================
+   ASSISTENTE ATIVO
+================================= */
+
+.assistente-botao.ativo {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(212, 175, 55, 0.35);
+}
+
+.assistente-botao.ativo .assistente-status {
+    background: #d4af37;
+
+    box-shadow:
+        0 0 12px rgba(212, 175, 55, 0.8);
+}
+
+/* ==============================
+   CONVITE AUTOMÁTICO
+================================= */
+
+.convite-assistente {
+    position: absolute;
+
+    right: 78px;
+    bottom: 14px;
+
+    padding: 11px 15px;
+
+    background: #151515;
+    color: #ffffff;
+
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+    border-radius: 10px;
+
+    white-space: nowrap;
+
+    font-size: 12px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.40);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    pointer-events: none;
+}
+
+.convite-assistente.mostrar {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(0);
+}
+
+/* ==============================
+   ASSISTENTE — CELULAR
+================================= */
+
+@media (max-width: 500px) {
+
+    .assistente-md {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .assistente-botao {
+        width: 56px;
+        height: 56px;
+    }
+
+    .assistente-logo {
+        font-size: 16px;
+    }
+
+    .assistente-status {
+        width: 11px;
+        height: 11px;
+
+        right: 1px;
+        bottom: 3px;
+    }
+
+    .assistente-janela {
+        position: fixed;
+
+        width: calc(100vw - 24px);
+
+        right: 12px;
+        left: 12px;
+
+        bottom: 82px;
+
+        max-height: 72vh;
+
+        border-radius: 16px;
+    }
+
+    .assistente-mensagens {
+        max-height: 220px;
+    }
+
+    .assistente-cabecalho {
+        padding: 16px;
+    }
+
+    .assistente-conversa {
+        padding: 16px;
+    }
+
+    .assistente-opcoes button {
+        min-height: 46px;
+
+        font-size: 12px;
+    }
+
+    .mensagem-robo,
+    .mensagem-cliente {
+        max-width: 90%;
+    }
+
+    .assistente-etiqueta,
+    .convite-assistente {
+        right: 68px;
+
+        max-width: calc(100vw - 100px);
+
+        white-space: normal;
+
+        text-align: center;
+}
+    }
+
+    :focus-visible {
+    outline: 2px solid #d4af37;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   CORREÇÃO FINAL — ASSISTENTE MD
+========================================= */
+
+.assistente-janela {
+    width: 350px;
+    max-width: calc(100vw - 30px);
+
+    display: none;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.assistente-janela.aberta {
+    display: flex;
+}
+
+
+/* CABEÇALHO */
+
+.assistente-cabecalho {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 16px;
+}
+
+
+.assistente-cabecalho > div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.assistente-acoes {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-left: auto;
+}
+
+
+.assistente-acoes button {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: #999;
+
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.25s ease;
+}
+
+
+.assistente-acoes button:hover {
+    color: #d4af37;
+
+    border-color:
+        rgba(212, 175, 55, 0.35);
+
+    background:
+        rgba(212, 175, 55, 0.07);
+}
+
+
+/* =========================================
+   PROGRESSO
+========================================= */
+
+.assistente-progresso {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    display: none;
+
+    background: #0b0b0b;
+
+    border-bottom:
+        1px solid rgba(212, 175, 55, 0.15);
+}
+
+
+.assistente-progresso.ativo {
+    display: block;
+}
+
+
+.progresso-etapas {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 4px;
+
+    margin-bottom: 10px;
+}
+
+
+.progresso-etapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0.35;
+}
+
+
+.progresso-etapa span {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    color: #aaa;
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+
+.progresso-etapa small {
+    color: #777;
+
+    font-size: 6px;
+
+    white-space: nowrap;
+}
+
+
+.progresso-etapa.ativa,
+.progresso-etapa.concluida {
+    opacity: 1;
+}
+
+
+.progresso-etapa.ativa span {
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f2d675
+        );
+
+    color: #080808;
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 14px
+        rgba(212, 175, 55, 0.45);
+}
+
+
+.progresso-etapa.concluida span {
+    color: #d4af37;
+
+    border-color:
+        rgba(212, 175, 55, 0.55);
+
+    background:
+        rgba(212, 175, 55, 0.08);
+}
+
+
+/* ETAPA 1 DE 6 */
+
+.progresso-info {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 7px;
+
+    color: #888;
+
+    font-size: 10px;
+}
+
+
+#progressoPorcentagem {
+    color: #d4af37;
+
+    font-weight: bold;
+}
+
+
+/* BARRA */
+
+.progresso-barra {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+}
+
+
+.progresso-preenchimento {
+    width: 0%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #94731d,
+            #d4af37,
+            #f2d675
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width 0.4s ease;
+}
+
+
+/* MENSAGENS E OPÇÕES */
+
+.assistente-mensagens {
+    width: 100%;
+}
+
+
+.assistente-opcoes {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+/* ==============================
+   CUBO MD 3D — RESTAURADO
+================================= */
+
+.cena-3d {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 230px;
+    height: 230px;
+
+    transform:
+        translate(-50%, -50%);
+
+    perspective: 900px;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.32;
+
+    transition:
+        transform 0.18s ease-out;
+}
+
+
+.cubo-md {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    animation:
+        girarCuboMD
+        14s
+        linear
+        infinite;
+}
+
+
+.cubo-md .face {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 230px;
+    height: 230px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212, 175, 55, 0.14),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.48);
+
+    color:
+        rgba(242, 214, 117, 0.85);
+
+    font-size: 48px;
+    font-weight: 900;
+
+    letter-spacing: 6px;
+
+    text-shadow:
+        0 0 18px
+        rgba(212, 175, 55, 0.45);
+
+    box-shadow:
+        inset 0 0 35px
+        rgba(212, 175, 55, 0.04);
+
+    backface-visibility: visible;
+}
+
+
+.cubo-md .frente {
+    transform:
+        rotateY(0deg)
+        translateZ(115px);
+}
+
+
+.cubo-md .tras {
+    transform:
+        rotateY(180deg)
+        translateZ(115px);
+}
+
+
+.cubo-md .direita {
+    transform:
+        rotateY(90deg)
+        translateZ(115px);
+}
+
+
+.cubo-md .esquerda {
+    transform:
+        rotateY(-90deg)
+        translateZ(115px);
+}
+
+
+.cubo-md .cima {
+    transform:
+        rotateX(90deg)
+        translateZ(115px);
+}
+
+
+.cubo-md .baixo {
+    transform:
+        rotateX(-90deg)
+        translateZ(115px);
+}
+
+
+@keyframes girarCuboMD {
+
+    from {
+        transform:
+            rotateX(-12deg)
+            rotateY(0deg);
+    }
+
+    to {
+        transform:
+            rotateX(-12deg)
+            rotateY(360deg);
+    }
+
+}
+
+
+/* CONTEÚDO FICA NA FRENTE */
+
+.inicio-conteudo {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .cena-3d {
+        width: 170px;
+        height: 170px;
+    }
+
+    .cubo-md .face {
+        width: 170px;
+        height: 170px;
+
+        font-size: 34px;
+    }
+
+    .cubo-md .frente {
+        transform:
+            rotateY(0deg)
+            translateZ(85px);
+    }
+
+    .cubo-md .tras {
+        transform:
+            rotateY(180deg)
+            translateZ(85px);
+    }
+
+    .cubo-md .direita {
+        transform:
+            rotateY(90deg)
+            translateZ(85px);
+    }
+
+    .cubo-md .esquerda {
+        transform:
+            rotateY(-90deg)
+            translateZ(85px);
+    }
+
+    .cubo-md .cima {
+        transform:
+            rotateX(90deg)
+            translateZ(85px);
+    }
+
+    .cubo-md .baixo {
+        transform:
+            rotateX(-90deg)
+            translateZ(85px);
+    }
+
+}
+
+/* =========================================
+   HOME PREMIUM — MD WEB STUDIO
+========================================= */
+
+#inicio {
+    isolation: isolate;
+}
+
+
+/* CONTEÚDO PRINCIPAL */
+
+#inicio .inicio-conteudo {
+    max-width: 950px;
+}
+
+
+/* FRASE SUPERIOR */
+
+#inicio .subtitulo {
+    font-size: 13px;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 24px;
+
+    opacity: 0.92;
+
+    text-shadow:
+        0 0 18px rgba(212, 175, 55, 0.30);
+}
+
+
+/* MD PRINCIPAL */
+
+#inicio h1 {
+    position: relative;
+
+    margin-bottom: 24px;
+
+    line-height: 0.95;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(212, 175, 55, 0.28)
+        )
+        drop-shadow(
+            0 18px 30px
+            rgba(0, 0, 0, 0.85)
+        );
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+
+#inicio h1:hover {
+    transform:
+        translateY(-4px)
+        scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(212, 175, 55, 0.42)
+        )
+        drop-shadow(
+            0 22px 35px
+            rgba(0, 0, 0, 0.90)
+        );
+}
+
+
+/* TEXTO */
+
+#inicio .descricao {
+    max-width: 680px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 38px;
+
+    color: #c5c5c5;
+
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+
+/* BOTÕES */
+
+#inicio .botoes {
+    gap: 14px;
+}
+
+
+#inicio .botao {
+    position: relative;
+
+    min-width: 205px;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+#inicio .botao:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 16px 35px
+        rgba(212, 175, 55, 0.20);
+}
+
+
+#inicio .botao-secundario {
+    background:
+        rgba(8, 8, 8, 0.55);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* =========================================
+   CUBO 3D MAIS PREMIUM
+========================================= */
+
+#inicio .cena-3d {
+    opacity: 0.22;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(212, 175, 55, 0.18)
+        );
+}
+
+
+#inicio .cubo-md .face {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212, 175, 55, 0.10),
+            rgba(255, 255, 255, 0.012)
+        );
+
+    border-color:
+        rgba(212, 175, 55, 0.42);
+
+    box-shadow:
+        inset 0 0 35px
+        rgba(212, 175, 55, 0.05),
+
+        0 0 22px
+        rgba(212, 175, 55, 0.06);
+}
+
+
+/* =========================================
+   BRILHO ATRÁS DO MD
+========================================= */
+
+#inicio .inicio-conteudo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 460px;
+    height: 230px;
+
+    top: 43%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(212, 175, 55, 0.12),
+            rgba(212, 175, 55, 0.025) 45%,
+            transparent 72%
+        );
+
+    filter: blur(20px);
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    animation:
+        respirarHome
+        4s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes respirarHome {
+
+    from {
+        opacity: 0.65;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    #inicio .subtitulo {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    #inicio .descricao {
+        font-size: 16px;
+    }
+
+    #inicio .inicio-conteudo::before {
+        width: 280px;
+        height: 180px;
+    }
+
+}
+
+/* =========================================
+   SERVIÇOS PREMIUM — MD WEB STUDIO
+========================================= */
+
+#servicos {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* BRILHO DE FUNDO */
+
+#servicos::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 420px;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(212, 175, 55, 0.08),
+            transparent 68%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+/* CONTEÚDO */
+
+#servicos .servicos-conteudo {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* TÍTULO */
+
+#servicos h2 {
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 22px
+        rgba(212, 175, 55, 0.12);
+}
+
+
+/* GRID */
+
+#servicos .servicos-grid {
+    gap: 22px;
+}
+
+
+/* CARD */
+
+#servicos .servico {
+    position: relative;
+
+    min-height: 260px;
+
+    padding: 36px 25px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 25, 25, 0.95),
+            rgba(9, 9, 9, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.16);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 18px 40px
+        rgba(0, 0, 0, 0.28);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* LINHA DOURADA SUPERIOR */
+
+#servicos .servico::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 0;
+    height: 2px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+    transition:
+        width 0.4s ease;
+}
+
+
+#servicos .servico:hover::before {
+    width: 75%;
+}
+
+
+/* BRILHO INTERNO */
+
+#servicos .servico::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    top: -80px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(212, 175, 55, 0.06);
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+
+/* HOVER */
+
+#servicos .servico:hover {
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(212, 175, 55, 0.48);
+
+    box-shadow:
+        0 24px 55px
+        rgba(0, 0, 0, 0.42),
+
+        0 0 22px
+        rgba(212, 175, 55, 0.07);
+}
+
+
+/* ÍCONE */
+
+#servicos .servico > span {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 auto 22px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(212, 175, 55, 0.07);
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.20);
+
+    font-size: 27px;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+#servicos .servico:hover > span {
+    transform:
+        translateY(-4px)
+        scale(1.07);
+
+    background:
+        rgba(212, 175, 55, 0.12);
+
+    box-shadow:
+        0 0 22px
+        rgba(212, 175, 55, 0.10);
+}
+
+
+/* TÍTULO DO CARD */
+
+#servicos .servico h3 {
+    font-size: 19px;
+
+    margin-bottom: 14px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+/* TEXTO */
+
+#servicos .servico p {
+    color: #9c9c9c;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    #servicos .servico {
+        min-height: auto;
+
+        padding: 30px 22px;
+    }
+
+}
+
+/* =========================================
+   PLANOS PREMIUM — MD WEB STUDIO
+========================================= */
+
+#planos {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* LUZ DE FUNDO */
+
+#planos::before {
+    content: "";
+
+    position: absolute;
+
+    width: 750px;
+    height: 500px;
+
+    top: 52%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(212, 175, 55, 0.085),
+            transparent 68%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+#planos .planos-conteudo {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* GRID */
+
+#planos .planos-grid {
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+/* CARDS */
+
+#planos .plano {
+    position: relative;
+
+    overflow: visible;
+
+    padding: 42px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 25, 25, 0.97),
+            rgba(8, 8, 8, 0.99)
+        );
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.16);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 45px
+        rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* HOVER NORMAL */
+
+#planos .plano:hover {
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(212, 175, 55, 0.48);
+
+    box-shadow:
+        0 28px 60px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 25px
+        rgba(212, 175, 55, 0.07);
+}
+
+
+/* ÍCONES */
+
+#planos .plano-icone {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(212, 175, 55, 0.07);
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.20);
+
+    font-size: 27px;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+#planos .plano:hover .plano-icone {
+    transform:
+        translateY(-4px)
+        scale(1.06);
+
+    box-shadow:
+        0 0 24px
+        rgba(212, 175, 55, 0.10);
+}
+
+
+/* TÍTULO */
+
+#planos .plano h3 {
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+
+/* DESCRIÇÃO */
+
+#planos .plano > p {
+    color: #999;
+
+    line-height: 1.7;
+}
+
+
+/* LISTA */
+
+#planos .plano li {
+    position: relative;
+
+    color: #bcbcbc;
+
+    padding: 10px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================
+   PLANO PRINCIPAL
+========================================= */
+
+#planos .plano-destaque {
+    transform:
+        translateY(-12px);
+
+    border-color:
+        rgba(212, 175, 55, 0.58);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31, 27, 16, 0.98),
+            rgba(10, 10, 9, 0.99)
+        );
+
+    box-shadow:
+        0 28px 65px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 35px
+        rgba(212, 175, 55, 0.08);
+}
+
+
+/* ETIQUETA MAIS ESCOLHIDO */
+
+#planos .plano-destaque::before {
+    content: "MAIS ESCOLHIDO";
+
+    position: absolute;
+
+    top: -14px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        7px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0ca48,
+            #b98b1d
+        );
+
+    color: #080808;
+
+    border-radius: 30px;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 8px 22px
+        rgba(212, 175, 55, 0.20);
+}
+
+
+/* REMOVE O EFEITO ANTIGO DUPLICADO */
+
+#planos .plano-destaque::after {
+    display: none;
+}
+
+
+/* HOVER DO PRINCIPAL */
+
+#planos .plano-destaque:hover {
+    transform:
+        translateY(-18px);
+
+    border-color:
+        rgba(212, 175, 55, 0.85);
+
+    box-shadow:
+        0 32px 70px
+        rgba(0, 0, 0, 0.50),
+
+        0 0 42px
+        rgba(212, 175, 55, 0.12);
+}
+
+
+/* BOTÕES */
+
+#planos .plano .botao {
+    border-radius: 10px;
+
+    margin-top: auto;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#planos .plano .botao:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 14px 28px
+        rgba(212, 175, 55, 0.20);
+}
+
+
+/* CELULAR */
+
+@media (max-width: 850px) {
+
+    #planos .plano-destaque {
+        transform: none;
+    }
+
+    #planos .plano-destaque:hover {
+        transform:
+            translateY(-8px);
+    }
+
+}
+
+/* =========================================
+   PORTFÓLIO PREMIUM — MD WEB STUDIO
+========================================= */
+
+#portfolio {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ILUMINAÇÃO DE FUNDO */
+
+#portfolio::before {
+    content: "";
+
+    position: absolute;
+
+    width: 800px;
+    height: 500px;
+
+    top: 55%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(212, 175, 55, 0.08),
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+
+#portfolio .portfolio-conteudo {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* CARD DO PROJETO */
+
+#portfolio .projeto {
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24, 24, 24, 0.98),
+            rgba(8, 8, 8, 0.99)
+        );
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.20);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 28px 70px
+        rgba(0, 0, 0, 0.45);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+#portfolio .projeto:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(212, 175, 55, 0.55);
+
+    box-shadow:
+        0 36px 85px
+        rgba(0, 0, 0, 0.55),
+
+        0 0 35px
+        rgba(212, 175, 55, 0.08);
+}
+
+
+/* LINHA DOURADA SUPERIOR */
+
+#portfolio .projeto::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 65%;
+    height: 2px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+    opacity: 0.7;
+
+    z-index: 5;
+}
+
+
+/* ÁREA DAS IMAGENS */
+
+#portfolio .projeto-imagem {
+    position: relative;
+
+    padding: 28px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.10),
+            rgba(8, 8, 8, 0.95) 70%
+        );
+}
+
+
+/* GALERIA */
+
+#portfolio .case-galeria {
+    gap: 18px;
+}
+
+
+/* PRINTS */
+
+#portfolio .case-imagem {
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.20);
+
+    border-radius: 14px;
+
+    background: #0a0a0a;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.40);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+#portfolio .case-imagem:hover {
+    transform:
+        translateY(-5px)
+        scale(1.01);
+
+    border-color:
+        rgba(212, 175, 55, 0.55);
+
+    box-shadow:
+        0 22px 45px
+        rgba(0, 0, 0, 0.50);
+}
+
+
+#portfolio .case-imagem img {
+    width: 100%;
+
+    display: block;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+#portfolio .case-imagem:hover img {
+    transform:
+        scale(1.025);
+}
+
+
+/* TAGS NAS IMAGENS */
+
+#portfolio .case-tag {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 4;
+
+    padding:
+        7px 11px;
+
+    background:
+        rgba(5, 5, 5, 0.82);
+
+    color: #d4af37;
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.28);
+
+    border-radius: 20px;
+
+    backdrop-filter:
+        blur(8px);
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* TEXTO DO PROJETO */
+
+#portfolio .projeto-conteudo {
+    padding:
+        48px 42px;
+}
+
+
+#portfolio .projeto-categoria {
+    margin-bottom: 15px;
+
+    color: #d4af37;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+#portfolio .projeto h3 {
+    margin-bottom: 20px;
+
+    font-size: 29px;
+
+    line-height: 1.25;
+
+    color: #fff;
+}
+
+
+#portfolio .projeto-conteudo > p:not(.projeto-categoria) {
+    color: #a9a9a9;
+
+    font-size: 15px;
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+
+/* BOTÃO */
+
+#portfolio .projeto .botao {
+    margin-top: 10px;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#portfolio .projeto .botao:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 32px
+        rgba(212, 175, 55, 0.20);
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    #portfolio .projeto {
+        grid-template-columns: 1fr;
+    }
+
+    #portfolio .projeto-imagem {
+        padding: 18px;
+    }
+
+    #portfolio .projeto-conteudo {
+        padding:
+            32px 24px;
+    }
+
+    #portfolio .projeto h3 {
+        font-size: 24px;
+    }
+
+}
+
+/* =========================================
+   SOBRE PREMIUM — MD WEB STUDIO
+========================================= */
+
+#sobre {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* LUZ DE FUNDO */
+
+#sobre::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 500px;
+
+    top: 50%;
+    right: -120px;
+
+    transform: translateY(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(212, 175, 55, 0.08),
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+
+#sobre .sobre-conteudo {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* TEXTO */
+
+#sobre .sobre-texto h2 {
+    margin-bottom: 28px;
+
+    text-shadow:
+        0 0 22px
+        rgba(212, 175, 55, 0.12);
+}
+
+
+#sobre .sobre-texto p:not(.titulo-pequeno) {
+    color: #a9a9a9;
+
+    font-size: 16px;
+
+    line-height: 1.85;
+}
+
+
+/* BOTÃO */
+
+#sobre .sobre-texto .botao {
+    margin-top: 20px;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#sobre .sobre-texto .botao:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 32px
+        rgba(212, 175, 55, 0.20);
+}
+
+
+/* =========================================
+   CARDS DE DESTAQUE
+========================================= */
+
+#sobre .sobre-destaque {
+    gap: 20px;
+}
+
+
+#sobre .destaque {
+    position: relative;
+
+    min-height: 165px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 25, 25, 0.97),
+            rgba(8, 8, 8, 0.99)
+        );
+
+    border:
+        1px solid
+        rgba(212, 175, 55, 0.16);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 18px 40px
+        rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* BRILHO INTERNO */
+
+#sobre .destaque::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    top: -60px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(212, 175, 55, 0.06);
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+/* HOVER */
+
+#sobre .destaque:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(212, 175, 55, 0.50);
+
+    box-shadow:
+        0 25px 55px
+        rgba(0, 0, 0, 0.45),
+
+        0 0 25px
+        rgba(212, 175, 55, 0.07);
+}
+
+
+/* NÚMEROS / ÍCONES */
+
+#sobre .destaque strong {
+    color: #d4af37;
+
+    font-size: 30px;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 18px
+        rgba(212, 175, 55, 0.18);
+}
+
+
+/* DESCRIÇÃO */
+
+#sobre .destaque span {
+    color: #999;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    #sobre .sobre-conteudo {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    #sobre .sobre-texto {
+        text-align: center;
+    }
+
+    #sobre .sobre-destaque {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+/* =========================================
+   CONTATO PREMIUM — MD WEB STUDIO
+========================================= */
+
+#contato {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ILUMINAÇÃO */
+
+#contato::before {
+    content: "";
+
+    position: absolute;
+
+    width: 750px;
+    height: 500px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(212, 175, 55, 0.11),
+            rgba(212, 175, 55, 0.025) 45%,
+            transparent 72%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+
+#contato .contato-conteudo {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+}
+
+
+/* TEXTO PEQUENO */
+
+#contato .titulo-pequeno {
+    margin-bottom: 15px;
+
+    letter-spacing: 4px;
+}
+
+
+/* TÍTULO */
+
+#contato h2 {
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 25px
+        rgba(212, 175, 55, 0.14);
+}
+
+
+/* DESCRIÇÃO */
+
+#contato .contato-conteudo
+> p:not(.titulo-pequeno):not(.contato-final) {
+
+    max-width: 650px;
+
+    color: #aaa;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* BOTÃO WHATSAPP */
+
+#contato .contato-botoes {
+    margin-top: 10px;
+}
+
+
+#contato .botao {
+    min-width: 260px;
+
+    padding: 18px 32px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e3bd3a,
+            #b98b1d
+        );
+
+    color: #080808;
+
+    box-shadow:
+        0 15px 35px
+        rgba(212, 175, 55, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+#contato .botao:hover {
+    transform:
+        translateY(-5px)
+        scale(1.015);
+
+    box-shadow:
+        0 22px 45px
+        rgba(212, 175, 55, 0.28);
+
+    filter: brightness(1.08);
+}
+
+
+/* FRASE FINAL */
+
+#contato .contato-final {
+    margin-top: 10px;
+
+    color: #686868;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   RODAPÉ PREMIUM
+========================================= */
+
+footer {
+    position: relative;
+
+    padding: 28px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #070707,
+            #030303
+        );
+
+    border-top:
+        1px solid
+        rgba(212, 175, 55, 0.12);
+
+    text-align: center;
+}
+
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: 50%;
+
+    width: 220px;
+    height: 1px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+    opacity: 0.5;
+}
+
+
+footer p {
+    color: #777;
+
+    font-size: 12px;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    #contato {
+        padding:
+            85px 20px;
+    }
+
+    #contato h2 {
+        font-size: 38px;
+    }
+
+    #contato .botao {
+        width: 100%;
+        min-width: auto;
+    }
+
+}
+
+/* =========================================
+   AJUSTE FINAL — HOME NO CELULAR
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* CABEÇALHO */
+
+    .cabecalho {
+        min-height: auto;
+
+        padding: 16px 14px 14px;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+
+    .logo {
+        font-size: 19px;
+
+        letter-spacing: 3px;
+
+        text-align: center;
+    }
+
+
+    /* MENU EM 3 COLUNAS */
+
+    .menu {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 8px 5px;
+    }
+
+
+    .menu a {
+        width: 100%;
+
+        padding: 6px 2px;
+
+        text-align: center;
+
+        font-size: 9px;
+    }
+
+
+    /* HOME */
+
+    #inicio {
+        min-height: 610px;
+
+        padding:
+            55px 18px 70px;
+    }
+
+
+    #inicio .inicio-conteudo {
+        max-width: 100%;
+    }
+
+
+    #inicio .subtitulo {
+        font-size: 9px;
+
+        letter-spacing: 2.2px;
+
+        line-height: 1.7;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* MD */
+
+    #inicio h1 {
+        font-size: 68px;
+
+        letter-spacing: 8px;
+
+        margin-bottom: 20px;
+    }
+
+
+    /* DESCRIÇÃO */
+
+    #inicio .descricao {
+        max-width: 330px;
+
+        margin:
+            0 auto 28px;
+
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+
+    /* BOTÕES */
+
+    #inicio .botoes {
+        width: 100%;
+
+        max-width: 330px;
+
+        margin: 0 auto;
+
+        gap: 10px;
+    }
+
+
+    #inicio .botoes .botao {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 15px 16px;
+
+        font-size: 11px;
+
+        border-radius: 9px;
+    }
+
+
+    /* CUBO MAIS DISCRETO */
+
+    #inicio .cena-3d {
+        width: 145px;
+        height: 145px;
+
+        top: 43%;
+
+        opacity: 0.13;
+    }
+
+
+    #inicio .cubo-md .face {
+        width: 145px;
+        height: 145px;
+
+        font-size: 28px;
+
+        letter-spacing: 4px;
+    }
+
+
+    #inicio .cubo-md .frente {
+        transform:
+            rotateY(0deg)
+            translateZ(72.5px);
+    }
+
+    #inicio .cubo-md .tras {
+        transform:
+            rotateY(180deg)
+            translateZ(72.5px);
+    }
+
+    #inicio .cubo-md .direita {
+        transform:
+            rotateY(90deg)
+            translateZ(72.5px);
+    }
+
+    #inicio .cubo-md .esquerda {
+        transform:
+            rotateY(-90deg)
+            translateZ(72.5px);
+    }
+
+    #inicio .cubo-md .cima {
+        transform:
+            rotateX(90deg)
+            translateZ(72.5px);
+    }
+
+    #inicio .cubo-md .baixo {
+        transform:
+            rotateX(-90deg)
+            translateZ(72.5px);
+    }
+
+
+    /* BOTÃO DO ROBÔ */
+
+    .assistente-botao {
+        width: 52px;
+        height: 52px;
+    }
+
+    .assistente-logo {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 
 <body>
 
+
+
     <!-- MENU -->
+
     <header class="cabecalho">
 
+
+
         <div class="logo">
+
     MD WEB STUDIO
+
 </div>
 
+
+
    <nav class="menu">
+
     <a href="#inicio">Início</a>
+
     <a href="#servicos">Serviços</a>
+
     <a href="#planos">Planos</a>
+
     <a href="#portfolio">Portfólio</a>
+
     <a href="#sobre">Sobre</a>
+
     <a href="#contato">Contato</a>
+
 </nav>
+
+
 
     </header>
 
 
+
+
+
    <!-- INÍCIO -->
+
 <section id="inicio" class="inicio">
+
+
+
+<div class="cena-3d" aria-hidden="true">
+
+
+
+    <div class="cubo-md">
+
+
+
+        <div class="face frente">MD</div>
+
+        <div class="face tras">MD</div>
+
+        <div class="face direita">MD</div>
+
+        <div class="face esquerda">MD</div>
+
+        <div class="face cima"></div>
+
+        <div class="face baixo"></div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
 
     <div class="inicio-conteudo">
 
+
+
         <p class="subtitulo">
+
             SITES • DESIGN • TECNOLOGIA • RESULTADOS
+
         </p>
+
+
 
         <h1>
+
             MD
+
         </h1>
 
+
+
         <p class="descricao">
+
             Criamos sites modernos e profissionais para empresas
+
             que querem crescer, conquistar clientes e se destacar
+
             na internet.
+
         </p>
+
+
 
         <div class="botoes">
 
+
+
             <a href="#servicos" class="botao">
+
                 CONHECER SERVIÇOS
+
             </a>
 
+
+
             <a href="#portfolio" class="botao botao-secundario">
+
                 VER PORTFÓLIO
+
             </a>
+
+
 
         </div>
 
+
+
     </div>
 
+
+
 </section>
+
+
+
 
 
    <!-- SERVIÇOS -->
+
 <section id="servicos" class="servicos">
+
+
 
     <div class="servicos-conteudo">
 
+
+
         <p class="titulo-pequeno">
+
             O QUE FAZEMOS
+
         </p>
+
+
 
         <h2>
+
             Soluções digitais para o seu negócio.
+
         </h2>
 
+
+
         <p class="descricao-servicos">
+
             Criamos experiências digitais modernas para empresas
+
             que querem ter uma presença profissional na internet.
+
         </p>
+
+
 
 <div class="servicos-grid">
 
+
+
     <div class="servico">
+
+
 
         <span>🌐</span>
 
+
+
         <h3>Site Profissional</h3>
 
+
+
         <p>
+
             Apresente sua empresa com um site moderno,
+
             profissional e feito para transmitir confiança
+
             aos seus clientes.
+
         </p>
+
+
 
     </div>
 
 
+
+
+
     <div class="servico">
+
+
 
         <span>📱</span>
 
+
+
         <h3>100% Responsivo</h3>
 
+
+
         <p>
+
             Seu site funcionando perfeitamente no celular,
+
             tablet e computador para que seu cliente possa
+
             acessar de qualquer lugar.
+
         </p>
+
+
 
     </div>
 
 
+
+
+
     <div class="servico">
+
+
 
         <span>🎨</span>
 
+
+
         <h3>Design Personalizado</h3>
 
+
+
         <p>
+
             Um visual criado para combinar com sua marca,
+
             destacar seu negócio e causar uma boa primeira
+
             impressão.
+
         </p>
 
+
+
     </div>
+
+
+
 
 
     <div class="servico">
 
+
+
         <span>🚀</span>
+
+
 
         <h3>Presença Digital</h3>
 
+
+
         <p>
+
             Coloque seu negócio na internet e facilite para
+
             novos clientes conhecerem sua empresa e entrarem
+
             em contato.
+
         </p>
+
+
 
     </div>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 </section>
 
+
+
 <!-- PLANOS -->
+
 <section id="planos" class="planos">
+
+
 
     <div class="planos-conteudo">
 
+
+
         <p class="titulo-pequeno">
+
             ESCOLHA SUA SOLUÇÃO
+
         </p>
+
+
 
         <h2>
+
             Um site para cada objetivo.
+
         </h2>
 
+
+
         <p class="descricao-planos">
+
             Escolha a opção que mais combina com o seu negócio.
+
             Se precisar de algo diferente, também podemos criar
+
             um projeto personalizado.
+
         </p>
+
+
+
 
 
         <div class="planos-grid">
 
 
+
+
+
             <!-- PLANO 1 -->
+
+
 
             <div class="plano">
 
+
+
                 <span class="plano-icone">
+
                     🚀
+
                 </span>
 
+
+
                 <h3>
+
                     Site Essencial
+
                 </h3>
 
+
+
                 <p>
+
                     Para profissionais e pequenos negócios
+
                     que precisam começar sua presença digital.
+
                 </p>
+
+
 
                 <ul>
 
+
+
                     <li>✓ Site profissional</li>
+
+
 
                     <li>✓ Design responsivo</li>
 
+
+
                     <li>✓ Página personalizada</li>
+
+
 
                     <li>✓ Botões de contato</li>
 
+
+
                 </ul>
 
+
+
                 <a href="#contato" class="botao">
+
                     SOLICITAR ORÇAMENTO
+
                 </a>
 
+
+
             </div>
+
+
+
 
 
             <!-- PLANO 2 -->
 
+
+
             <div class="plano plano-destaque">
 
+
+
                 <span class="plano-icone">
+
                     ⭐
+
                 </span>
 
+
+
                 <h3>
+
                     Site Profissional
+
                 </h3>
 
+
+
                 <p>
+
                     Para empresas que querem uma presença
+
                     digital mais completa e profissional.
+
                 </p>
+
+
 
                 <ul>
 
+
+
                     <li>✓ Site completo</li>
+
+
 
                     <li>✓ Design personalizado</li>
 
+
+
                     <li>✓ Responsivo para todos os dispositivos</li>
+
+
 
                     <li>✓ Seções estratégicas</li>
 
+
+
                     <li>✓ Formas de contato</li>
+
+
 
                 </ul>
 
+
+
                 <a href="#contato" class="botao">
+
                     SOLICITAR ORÇAMENTO
+
                 </a>
 
+
+
             </div>
+
+
+
 
 
             <!-- PLANO 3 -->
 
+
+
             <div class="plano">
 
+
+
                 <span class="plano-icone">
+
                     💎
+
                 </span>
 
+
+
                 <h3>
+
                     Site Personalizado
+
                 </h3>
 
+
+
                 <p>
+
                     Para projetos que precisam de funcionalidades
+
                     e soluções específicas.
+
                 </p>
+
+
 
                 <ul>
 
+
+
                     <li>✓ Projeto sob medida</li>
+
+
 
                     <li>✓ Design exclusivo</li>
 
+
+
                     <li>✓ Funcionalidades personalizadas</li>
+
+
 
                     <li>✓ Estrutura profissional</li>
 
+
+
                     <li>✓ Suporte ao projeto</li>
+
+
 
                 </ul>
 
+
+
                 <a href="#contato" class="botao">
+
                     SOLICITAR ORÇAMENTO
+
                 </a>
+
+
 
             </div>
 
 
+
+
+
         </div>
+
+
 
     </div>
 
+
+
 </section>
 
-   <!-- PORTFÓLIO -->
+
+
+  <!-- PORTFÓLIO -->
+
 <section id="portfolio" class="portfolio">
+
+
 
     <div class="portfolio-conteudo">
 
+
+
         <p class="titulo-pequeno">
-            NOSSO TRABALHO
+
+            PROJETO EM DESTAQUE
+
         </p>
+
+
 
         <h2>
-            Projetos que criamos.
+
+            Projetos que transformam negócios.
+
         </h2>
 
+
+
         <p class="descricao-portfolio">
-            Alguns exemplos de projetos desenvolvidos pela
-            MD Web Studio para apresentar negócios de forma
-            moderna e profissional.
+
+            Conheça um dos projetos desenvolvidos pela MD Web Studio.
+
         </p>
 
-       <div class="portfolio-grid">
 
-    <div class="projeto">
 
-        <div class="projeto-imagem">
 
-            <div class="projeto-logo">
 
-                <span>SEU PROJETO</span>
+        <div class="portfolio-grid">
 
-                <small>
-                    PODE ESTAR AQUI
-                </small>
+
+
+            <div class="projeto">
+
+
+
+                <!-- IMAGENS -->
+
+                <div class="projeto-imagem">
+
+
+
+                    <div class="case-galeria">
+
+
+
+                        <div class="case-imagem case-imagem-maior">
+
+
+
+                            <span class="case-tag">
+
+                                Tela inicial
+
+                            </span>
+
+
+
+                            <img
+
+                                src="img/refrigeracao-home.png"
+
+                                alt="Tela inicial do projeto de refrigeração"
+
+                            >
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="case-imagem case-imagem-menor">
+
+
+
+                            <span class="case-tag">
+
+                                Equipamentos
+
+                            </span>
+
+
+
+                            <img
+
+                                src="img/refrigeracao-equipamentos.png"
+
+                                alt="Área de equipamentos do projeto de refrigeração"
+
+                            >
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <!-- DESCRIÇÃO -->
+
+                <div class="projeto-conteudo">
+
+
+
+                    <p class="projeto-categoria">
+
+                        SITE INSTITUCIONAL
+
+                    </p>
+
+
+
+                    <h3>
+
+                        Refrigeração & Climatização
+
+                    </h3>
+
+
+
+                    <p>
+
+                        Site profissional desenvolvido para uma empresa
+
+                        especializada em refrigeração, climatização e
+
+                        manutenção de eletrodomésticos.
+
+                    </p>
+
+
+
+                    <p>
+
+                        O projeto conta com design responsivo,
+
+                        apresentação dos serviços, área de trabalhos
+
+                        e contato direto pelo WhatsApp.
+
+                    </p>
+
+
+
+                    <a href="#contato" class="botao">
+
+                        QUERO UM PROJETO ASSIM
+
+                    </a>
+
+
+
+                </div>
+
+
 
             </div>
 
-        </div>
 
-        <div class="projeto-conteudo">
-
-            <p class="projeto-categoria">
-                SEJA UM DOS PRIMEIROS
-            </p>
-
-            <h3>
-                Você pode ser o primeiro.
-            </h3>
-
-            <p>
-                Estamos construindo nosso portfólio e buscando
-                empresas e profissionais que queiram transformar
-                suas ideias em uma presença digital moderna e profissional.
-            </p>
-
-            <a href="#contato" class="botao">
-                QUERO MEU SITE
-            </a>
 
         </div>
+
+
 
     </div>
 
-</div>
+
 
 </section>
+
+
+
 
 
  <!-- SOBRE -->
+
 <section id="sobre" class="sobre">
+
+
 
     <div class="sobre-conteudo">
 
+
+
         <div class="sobre-texto">
 
+
+
             <p class="titulo-pequeno">
+
                 SOBRE O MD
+
             </p>
+
+
 
             <h2>
+
                 Tecnologia que transforma ideias em presença digital.
+
             </h2>
 
-            <p>
-                A MD Web Studio nasceu com o objetivo de ajudar
-                empresas e profissionais a terem uma presença
-                digital moderna, profissional e acessível.
-            </p>
+
 
             <p>
-                Desenvolvemos sites personalizados, responsivos
-                e pensados para destacar cada negócio na internet.
+
+                A MD Web Studio nasceu com o objetivo de ajudar
+
+                empresas e profissionais a terem uma presença
+
+                digital moderna, profissional e acessível.
+
             </p>
+
+
+
+            <p>
+
+                Desenvolvemos sites personalizados, responsivos
+
+                e pensados para destacar cada negócio na internet.
+
+            </p>
+
+
 
             <a href="#contato" class="botao">
+
                 FALAR COM O MD
+
             </a>
 
+
+
         </div>
+
+
 
         <div class="sobre-destaque">
 
+
+
             <div class="destaque">
+
                 <strong>100%</strong>
+
                 <span>Personalizado</span>
+
             </div>
 
+
+
             <div class="destaque">
+
                 <strong>📱</strong>
+
                 <span>Responsivo</span>
+
             </div>
 
+
+
             <div class="destaque">
+
                 <strong>⚡</strong>
+
                 <span>Moderno</span>
+
             </div>
 
+
+
             <div class="destaque">
+
                 <strong>🚀</strong>
+
                 <span>Focado no seu negócio</span>
+
             </div>
+
+
 
         </div>
 
+
+
     </div>
+
+
 
 </section>
 
+
+
 <!-- CONTATO -->
+
 <section id="contato" class="contato">
+
+
 
     <div class="contato-conteudo">
 
+
+
         <p class="titulo-pequeno">
+
             VAMOS CONVERSAR
+
         </p>
+
+
 
         <h2>
+
             Seu negócio merece um site profissional.
+
         </h2>
 
+
+
         <p>
+
             Tem uma empresa, projeto ou ideia que precisa de uma
+
             presença forte na internet? A MD Web Studio pode
+
             transformar sua ideia em um site moderno e profissional.
+
         </p>
+
+
 
         <div class="contato-botoes">
 
+
+
           <a href="https://wa.me/5521990487662?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20MD%20Web%20Studio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+
    target="_blank"
+
    rel="noopener noreferrer"
+
    class="botao">
+
     FALAR NO WHATSAPP
+
 </a>
+
+
 
         </div>
 
+
+
         <p class="contato-final">
+
             Seu próximo site pode começar aqui.
+
         </p>
+
+
 
     </div>
 
+
+
 </section>
-```
+
+
 
     <!-- RODAPÉ -->
+
     <footer>
 
+
+
        <p>
+
     © 2026 MD Web Studio — Todos os direitos reservados.
+
 </p>
 
+
+
     </footer>
-  
+
+
+
 <!-- ASSISTENTE MD -->
+
 <div class="assistente-md">
 
-<div class="convite-assistente" id="conviteAssistente">
-    👋 Oi! Posso te ajudar?
-</div>
 
- <span class="assistente-etiqueta">
-    Fale com o Assistente MD
-</span>
- 
-    <button class="assistente-botao" id="abrirAssistente">
 
-    <span class="assistente-logo">
-        MD
+    <div class="convite-assistente" id="conviteAssistente">
+
+        👋 Oi! Posso te ajudar?
+
+    </div>
+
+
+
+    <span class="assistente-etiqueta">
+
+        Fale com o Assistente MD
+
     </span>
 
-    <span class="assistente-status"></span>
 
-</button>
+
+    <button class="assistente-botao" id="abrirAssistente">
+
+
+
+        <span class="assistente-logo">
+
+            MD
+
+        </span>
+
+
+
+        <span class="assistente-status"></span>
+
+
+
+    </button>
+
+
+
+
 
     <div class="assistente-janela" id="janelaAssistente">
 
+
+
+        <!-- CABEÇALHO -->
+
         <div class="assistente-cabecalho">
+
+
+
             <div>
+
                 <strong>Assistente MD</strong>
+
                 <span>Online</span>
+
             </div>
 
-            <button id="fecharAssistente">
-                ✕
+
+
+           <div class="assistente-acoes">
+
+
+
+    <button
+
+        id="reiniciarAssistenteTopo"
+
+        type="button"
+
+        title="Recomeçar atendimento"
+
+        aria-label="Recomeçar atendimento">
+
+        ↻
+
+    </button>
+
+
+
+    <button
+
+        id="fecharAssistente"
+
+        type="button"
+
+        title="Fechar assistente"
+
+        aria-label="Fechar assistente">
+
+        ✕
+
+    </button>
+
+
+
+</div>
+
+
+
+
+
+                </div>
+
+        <!-- PROGRESSO -->
+
+        <div
+
+            class="assistente-progresso"
+
+            id="assistenteProgresso"
+
+        >
+
+
+
+<div class="progresso-etapas">
+
+
+
+    <div class="progresso-etapa ativa" data-etapa="1">
+
+        <span>1</span>
+
+        <small>Projeto</small>
+
+    </div>
+
+
+
+    <div class="progresso-etapa" data-etapa="2">
+
+        <span>2</span>
+
+        <small>Negócio</small>
+
+    </div>
+
+
+
+    <div class="progresso-etapa" data-etapa="3">
+
+        <span>3</span>
+
+        <small>Solução</small>
+
+    </div>
+
+
+
+    <div class="progresso-etapa" data-etapa="4">
+
+        <span>4</span>
+
+        <small>Objetivo</small>
+
+    </div>
+
+
+
+    <div class="progresso-etapa" data-etapa="5">
+
+        <span>5</span>
+
+        <small>Nome</small>
+
+    </div>
+
+
+
+    <div class="progresso-etapa" data-etapa="6">
+
+        <span>6</span>
+
+        <small>WhatsApp</small>
+
+    </div>
+
+
+
+</div>
+
+
+
+            <div class="progresso-info">
+
+
+
+                <span id="progressoTexto">
+
+                    Etapa 1 de 6
+
+                </span>
+
+
+
+                <span id="progressoPorcentagem">
+
+                    0%
+
+                </span>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="progresso-barra">
+
+
+
+                <div
+
+                    class="progresso-preenchimento"
+
+                    id="progressoPreenchimento">
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <!-- MENSAGENS -->
+
+        <div
+
+            class="assistente-mensagens"
+
+            id="mensagensAssistente"
+
+        >
+
+
+
+            <div class="mensagem-robo">
+
+                👋 Olá! Sou o assistente da MD Web Studio.
+
+                Como posso te ajudar?
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <!-- OPÇÕES -->
+
+        <div
+
+            class="assistente-opcoes"
+
+            id="opcoesAssistente"
+
+        >
+
+
+
+            <button data-acao="criar">
+
+                🚀 Quero criar um projeto
+
             </button>
 
+
+
+            <button data-acao="planos">
+
+                ⭐ Conhecer os planos
+
+            </button>
+
+
+
+            <button data-acao="servicos">
+
+                🌐 Ver os serviços
+
+            </button>
+
+
+
+            <button data-acao="contato">
+
+                💬 Falar com o MD
+
+            </button>
+
+
+
         </div>
 
-        <div class="assistente-mensagens" id="mensagensAssistente">
 
-    <div class="mensagem-robo">
-        👋 Olá! Sou o assistente da MD Web Studio.
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+// ==============================
+
+// MD WEB STUDIO
+
+// JavaScript
+
+// ==============================
+
+
+
+console.log("MD Web Studio carregado com sucesso!");
+
+
+
+
+
+// ==============================
+
+// ANIMAÇÕES AO ROLAR A PÁGINA
+
+// ==============================
+
+
+
+const elementos = document.querySelectorAll(
+
+    ".servico, .plano, .projeto, .destaque"
+
+);
+
+
+
+const observador = new IntersectionObserver((entradas) => {
+
+
+
+    entradas.forEach((entrada) => {
+
+
+
+        if (entrada.isIntersecting) {
+
+            entrada.target.classList.add("aparecer");
+
+        }
+
+
+
+    });
+
+
+
+}, {
+
+    threshold: 0.15
+
+});
+
+
+
+
+
+elementos.forEach((elemento) => {
+
+
+
+    observador.observe(elemento);
+
+
+
+});
+
+
+
+
+
+// ==============================
+
+// MENU ATIVO DURANTE A ROLAGEM
+
+// ==============================
+
+
+
+const secoes =
+
+    document.querySelectorAll(
+
+        "section[id]"
+
+    );
+
+
+
+const linksMenu =
+
+    document.querySelectorAll(
+
+        ".menu a"
+
+    );
+
+
+
+
+
+const observadorMenu =
+
+    new IntersectionObserver(
+
+        (entradas) => {
+
+
+
+            entradas.forEach(
+
+                (entrada) => {
+
+
+
+                    if (
+
+                        !entrada.isIntersecting
+
+                    ) {
+
+                        return;
+
+                    }
+
+
+
+
+
+                    linksMenu.forEach(
+
+                        (link) => {
+
+
+
+                            link.classList.remove(
+
+                                "ativo"
+
+                            );
+
+
+
+                        }
+
+                    );
+
+
+
+
+
+                    const linkAtivo =
+
+                        document.querySelector(
+
+                            `.menu a[href="#${entrada.target.id}"]`
+
+                        );
+
+
+
+
+
+                    if (linkAtivo) {
+
+
+
+                        linkAtivo.classList.add(
+
+                            "ativo"
+
+                        );
+
+
+
+                    }
+
+
+
+                }
+
+            );
+
+
+
+        },
+
+        {
+
+            rootMargin:
+
+                "-40% 0px -50% 0px"
+
+        }
+
+    );
+
+
+
+
+
+secoes.forEach((secao) => {
+
+
+
+    observadorMenu.observe(secao);
+
+
+
+});
+
+
+
+
+
+// ==============================
+
+// ELEMENTOS DO ASSISTENTE
+
+// ==============================
+
+
+
+const botaoAssistente =
+
+    document.getElementById(
+
+        "abrirAssistente"
+
+    );
+
+
+
+const janelaAssistente =
+
+    document.getElementById(
+
+        "janelaAssistente"
+
+    );
+
+
+
+const fecharAssistente =
+
+    document.getElementById(
+
+        "fecharAssistente"
+
+    );
+
+
+
+    const reiniciarAssistenteTopo =
+
+    document.getElementById(
+
+        "reiniciarAssistenteTopo"
+
+    );
+
+
+
+const caixaOpcoes =
+
+    document.getElementById(
+
+        "opcoesAssistente"
+
+    );
+
+
+
+const mensagensAssistente =
+
+    document.getElementById(
+
+        "mensagensAssistente"
+
+    );
+
+
+
+const mensagemRobo =
+
+    document.querySelector(
+
+        ".mensagem-robo"
+
+    );
+
+
+
+const conviteAssistente =
+
+    document.getElementById(
+
+        "conviteAssistente"
+
+    );
+
+
+
+
+
+// ==============================
+
+// ABRIR E FECHAR ASSISTENTE
+
+// ==============================
+
+
+
+if (
+
+    botaoAssistente &&
+
+    janelaAssistente
+
+) {
+
+
+
+    botaoAssistente.addEventListener(
+
+        "click",
+
+        () => {
+
+
+
+            janelaAssistente
+
+                .classList
+
+                .toggle("aberta");
+
+
+
+
+
+            botaoAssistente
+
+                .classList
+
+                .toggle(
+
+                    "ativo",
+
+                    janelaAssistente
+
+                        .classList
+
+                        .contains("aberta")
+
+                );
+
+
+
+
+
+            if (conviteAssistente) {
+
+
+
+                conviteAssistente
+
+                    .classList
+
+                    .remove("mostrar");
+
+
+
+            }
+
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+if (
+
+    fecharAssistente &&
+
+    janelaAssistente &&
+
+    botaoAssistente
+
+) {
+
+
+
+    fecharAssistente.addEventListener(
+
+        "click",
+
+        () => {
+
+
+
+            janelaAssistente
+
+                .classList
+
+                .remove("aberta");
+
+
+
+
+
+            botaoAssistente
+
+                .classList
+
+                .remove("ativo");
+
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// CONVITE AUTOMÁTICO
+
+// ==============================
+
+
+
+setTimeout(() => {
+
+
+
+    if (
+
+        conviteAssistente &&
+
+        janelaAssistente &&
+
+        !janelaAssistente
+
+            .classList
+
+            .contains("aberta")
+
+    ) {
+
+
+
+        conviteAssistente
+
+            .classList
+
+            .add("mostrar");
+
+
+
+
+
+        setTimeout(() => {
+
+
+
+            conviteAssistente
+
+                .classList
+
+                .remove("mostrar");
+
+
+
+        }, 5000);
+
+
+
+    }
+
+
+
+}, 3000);
+
+
+
+
+
+// ==============================
+
+// PROGRESSO DO ASSISTENTE
+
+// ==============================
+
+
+
+const assistenteProgresso =
+
+    document.getElementById(
+
+        "assistenteProgresso"
+
+    );
+
+
+
+const progressoTexto =
+
+    document.getElementById(
+
+        "progressoTexto"
+
+    );
+
+
+
+const progressoPorcentagem =
+
+    document.getElementById(
+
+        "progressoPorcentagem"
+
+    );
+
+
+
+const progressoPreenchimento =
+
+    document.getElementById(
+
+        "progressoPreenchimento"
+
+    );
+
+
+
+
+
+// ==============================
+
+// ATUALIZAR PROGRESSO
+
+// ==============================
+
+
+
+function atualizarProgresso(etapa) {
+
+
+
+    if (
+
+        !assistenteProgresso ||
+
+        !progressoTexto ||
+
+        !progressoPorcentagem ||
+
+        !progressoPreenchimento
+
+    ) {
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    const totalEtapas = 6;
+
+
+
+
+
+    const porcentagem =
+
+        Math.round(
+
+            (etapa / totalEtapas) * 100
+
+        );
+
+
+
+
+
+    assistenteProgresso
+
+        .classList
+
+        .add("ativo");
+
+
+
+
+
+    progressoTexto.textContent =
+
+        `Etapa ${etapa} de ${totalEtapas}`;
+
+
+
+
+
+    progressoPorcentagem.textContent =
+
+        `${porcentagem}%`;
+
+
+
+
+
+    progressoPreenchimento
+
+        .style
+
+        .width =
+
+        `${porcentagem}%`;
+
+
+
+
+
+    const etapasVisuais =
+
+        document.querySelectorAll(
+
+            ".progresso-etapa"
+
+        );
+
+
+
+
+
+    etapasVisuais.forEach(
+
+        (item) => {
+
+
+
+            const numeroEtapa =
+
+                Number(
+
+                    item.dataset.etapa
+
+                );
+
+
+
+
+
+            item.classList.remove(
+
+                "ativa",
+
+                "concluida"
+
+            );
+
+
+
+
+
+            const circulo =
+
+                item.querySelector(
+
+                    "span"
+
+                );
+
+
+
+
+
+            if (circulo) {
+
+
+
+                circulo.textContent =
+
+                    item.dataset.etapa;
+
+
+
+            }
+
+
+
+
+
+            if (
+
+                numeroEtapa < etapa
+
+            ) {
+
+
+
+                item.classList.add(
+
+                    "concluida"
+
+                );
+
+
+
+            }
+
+
+
+
+
+            if (
+
+                numeroEtapa === etapa
+
+            ) {
+
+
+
+                item.classList.add(
+
+                    "ativa"
+
+                );
+
+
+
+            }
+
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// CONCLUIR PROGRESSO
+
+// ==============================
+
+
+
+function concluirProgresso() {
+
+
+
+    if (
+
+        !assistenteProgresso ||
+
+        !progressoTexto ||
+
+        !progressoPorcentagem ||
+
+        !progressoPreenchimento
+
+    ) {
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    assistenteProgresso
+
+        .classList
+
+        .add("ativo");
+
+
+
+
+
+    progressoTexto.textContent =
+
+        "Projeto concluído ✓";
+
+
+
+
+
+    progressoPorcentagem.textContent =
+
+        "100%";
+
+
+
+
+
+    progressoPreenchimento
+
+        .style
+
+        .width =
+
+        "100%";
+
+
+
+
+
+    document
+
+        .querySelectorAll(
+
+            ".progresso-etapa"
+
+        )
+
+        .forEach(
+
+            (item) => {
+
+
+
+                item.classList.remove(
+
+                    "ativa"
+
+                );
+
+
+
+
+
+                item.classList.add(
+
+                    "concluida"
+
+                );
+
+
+
+
+
+                const circulo =
+
+                    item.querySelector(
+
+                        "span"
+
+                    );
+
+
+
+
+
+                if (circulo) {
+
+
+
+                    circulo.textContent =
+
+                        "✓";
+
+
+
+                }
+
+
+
+            }
+
+        );
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// ESCONDER / RESETAR PROGRESSO
+
+// ==============================
+
+
+
+function esconderProgresso() {
+
+
+
+    if (
+
+        !assistenteProgresso ||
+
+        !progressoTexto ||
+
+        !progressoPorcentagem ||
+
+        !progressoPreenchimento
+
+    ) {
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    assistenteProgresso
+
+        .classList
+
+        .remove("ativo");
+
+
+
+
+
+    progressoTexto.textContent =
+
+        "Etapa 1 de 6";
+
+
+
+
+
+    progressoPorcentagem.textContent =
+
+        "0%";
+
+
+
+
+
+    progressoPreenchimento
+
+        .style
+
+        .width =
+
+        "0%";
+
+
+
+
+
+    document
+
+        .querySelectorAll(
+
+            ".progresso-etapa"
+
+        )
+
+        .forEach(
+
+            (item) => {
+
+
+
+                item.classList.remove(
+
+                    "ativa",
+
+                    "concluida"
+
+                );
+
+
+
+
+
+                const circulo =
+
+                    item.querySelector(
+
+                        "span"
+
+                    );
+
+
+
+
+
+                if (circulo) {
+
+
+
+                    circulo.textContent =
+
+                        item.dataset.etapa;
+
+
+
+                }
+
+
+
+            }
+
+        );
+
+
+
+
+
+    const primeiraEtapa =
+
+        document.querySelector(
+
+            '.progresso-etapa[data-etapa="1"]'
+
+        );
+
+
+
+
+
+    if (primeiraEtapa) {
+
+
+
+        primeiraEtapa
+
+            .classList
+
+            .add("ativa");
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// DADOS DO CLIENTE
+
+// ==============================
+
+
+
+let tipoProjeto = "";
+
+
+
+let tipoNegocio = "";
+
+
+
+let tipoSite = "";
+
+
+
+let objetivoSite = "";
+
+
+
+let nomeCliente = "";
+
+
+
+let telefoneCliente = "";
+
+
+
+
+
+// Guarda a última resposta usada
+
+// para não repetir imediatamente
+
+
+
+const ultimaRespostaPorProjeto = {
+
+
+
+    Site: -1,
+
+
+
+    "Landing Page": -1,
+
+
+
+    "Automação": -1
+
+
+
+};
+
+
+
+
+
+// ==============================
+
+// SEGURANÇA DO TEXTO
+
+// ==============================
+
+
+
+function escaparHTML(texto) {
+
+
+
+    const elemento =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+
+
+
+    elemento.textContent =
+
+        texto;
+
+
+
+
+
+    return elemento.innerHTML;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// MENSAGEM DO CLIENTE
+
+// ==============================
+
+
+
+function adicionarMensagemCliente(
+
+    texto
+
+) {
+
+
+
+    const mensagem =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+
+
+
+    mensagem.classList.add(
+
+        "mensagem-cliente"
+
+    );
+
+
+
+
+
+    mensagem.textContent =
+
+        texto;
+
+
+
+
+
+    mensagensAssistente
+
+        .appendChild(
+
+            mensagem
+
+        );
+
+
+
+
+
+    mensagensAssistente
+
+        .scrollTop =
+
+        mensagensAssistente
+
+            .scrollHeight;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// MENSAGEM DO ROBÔ
+
+// ==============================
+
+
+
+function adicionarMensagemRobo(
+
+    texto
+
+) {
+
+
+
+    const mensagem =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+
+
+
+    mensagem.classList.add(
+
+        "mensagem-robo"
+
+    );
+
+
+
+
+
+    mensagem.innerHTML =
+
+        texto;
+
+
+
+
+
+    mensagensAssistente
+
+        .appendChild(
+
+            mensagem
+
+        );
+
+
+
+
+
+    mensagensAssistente
+
+        .scrollTop =
+
+        mensagensAssistente
+
+            .scrollHeight;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// ASSISTENTE DIGITANDO
+
+// ==============================
+
+
+
+function mostrarDigitando() {
+
+
+
+    const digitando =
+
+        document.createElement("div");
+
+
+
+
+
+    digitando.classList.add(
+
+        "mensagem-robo",
+
+        "digitando"
+
+    );
+
+
+
+
+
+    digitando.setAttribute(
+
+        "aria-label",
+
+        "Assistente MD está digitando"
+
+    );
+
+
+
+
+
+    digitando.innerHTML = `
+
+        <div class="digitando-pontos">
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+        </div>
+
+    `;
+
+
+
+
+
+    mensagensAssistente.appendChild(
+
+        digitando
+
+    );
+
+
+
+
+
+    mensagensAssistente.scrollTop =
+
+        mensagensAssistente.scrollHeight;
+
+
+
+
+
+    return digitando;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// RESPOSTA COM ATRASO
+
+// ==============================
+
+
+
+function responderComAtraso(
+
+    texto,
+
+    depois
+
+) {
+
+
+
+    const digitando =
+
+        mostrarDigitando();
+
+
+
+
+
+    setTimeout(() => {
+
+
+
+        digitando.remove();
+
+
+
+
+
+        adicionarMensagemRobo(
+
+            texto
+
+        );
+
+
+
+
+
+        if (depois) {
+
+
+
+            depois();
+
+
+
+        }
+
+
+
+    }, 700);
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// PERGUNTA TIPO DE SITE
+
+// ==============================
+
+
+
+function mostrarPerguntaTipoSite() {
+
+
+
+    const negocioSeguro =
+
+        escaparHTML(
+
+            tipoNegocio
+
+        );
+
+
+
+
+
+    adicionarMensagemRobo(`
+
+
+
+        ✅ Perfeito!
+
+
+
+        <br><br>
+
+
+
+        Seu negócio é:
+
+        <strong>${negocioSeguro}</strong>.
+
+
+
+        <br><br>
+
+
+
+        Agora me conta:
+
+        que tipo de site você procura?
+
+
+
+    `);
+
+
+
+
+
+    caixaOpcoes.innerHTML = `
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Site simples">
+
+
+
+            🚀 Site simples
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Site profissional">
+
+
+
+            💻 Site profissional
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Site personalizado">
+
+
+
+            💎 Site personalizado
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Ainda não sei">
+
+
+
+            🤔 Ainda não sei
+
+
+
+        </button>
+
+
+
+    `;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// PERGUNTA LANDING PAGE
+
+// ==============================
+
+
+
+function mostrarPerguntaLandingPage() {
+
+
+
+    adicionarMensagemRobo(`
+
+
+
+        🎯 Perfeito!
+
+
+
+        <br><br>
+
+
+
+        Que tipo de Landing Page
+
+        você está procurando?
+
+
+
+    `);
+
+
+
+
+
+    caixaOpcoes.innerHTML = `
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Landing Page para captar clientes">
+
+
+
+            🎯 Captar clientes
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Landing Page de vendas">
+
+
+
+            💰 Vender produto ou serviço
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Landing Page para campanha ou evento">
+
+
+
+            📢 Campanha ou evento
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Ainda não sei">
+
+
+
+            🤔 Ainda não sei
+
+
+
+        </button>
+
+
+
+    `;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// PERGUNTA AUTOMAÇÃO
+
+// ==============================
+
+
+
+function mostrarPerguntaAutomacao() {
+
+
+
+    adicionarMensagemRobo(`
+
+
+
+        🤖 Legal!
+
+
+
+        <br><br>
+
+
+
+        Que tipo de automação
+
+        você gostaria de criar?
+
+
+
+    `);
+
+
+
+
+
+    caixaOpcoes.innerHTML = `
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Automação de atendimento">
+
+
+
+            💬 Atendimento automático
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Automação para WhatsApp">
+
+
+
+            📱 Automação para WhatsApp
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Captação e qualificação de clientes">
+
+
+
+            🎯 Captar e qualificar clientes
+
+
+
+        </button>
+
+
+
+
+
+        <button
+
+            data-acao="tipo-site"
+
+            data-valor="Automação personalizada">
+
+
+
+            ⚙️ Automação personalizada
+
+
+
+        </button>
+
+
+
+    `;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// DECIDE O CAMINHO
+
+// ==============================
+
+
+
+function continuarFluxoProjeto() {
+
+
+
+    if (
+
+        tipoProjeto === "Site"
+
+    ) {
+
+
+
+        mostrarPerguntaTipoSite();
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    if (
+
+        tipoProjeto ===
+
+        "Landing Page"
+
+    ) {
+
+
+
+        mostrarPerguntaLandingPage();
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    if (
+
+        tipoProjeto ===
+
+        "Automação"
+
+    ) {
+
+
+
+        mostrarPerguntaAutomacao();
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// OBJETIVOS DO PROJETO
+
+// ==============================
+
+
+
+function mostrarObjetivosProjeto() {
+
+
+
+    adicionarMensagemRobo(`
+
+
+
+        🎯 Qual é o principal objetivo
+
+        do seu projeto?
+
+
+
+    `);
+
+
+
+
+
+    // SITE
+
+
+
+    if (
+
+        tipoProjeto === "Site"
+
+    ) {
+
+
+
+        caixaOpcoes.innerHTML = `
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Conseguir novos clientes">
+
+
+
+                🎯 Conseguir novos clientes
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Apresentar minha empresa">
+
+
+
+                🏢 Apresentar minha empresa
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Vender produtos ou serviços">
+
+
+
+                💰 Vender produtos ou serviços
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Fortalecer minha presença digital">
+
+
+
+                🚀 Fortalecer minha presença digital
+
+
+
+            </button>
+
+
+
+        `;
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    // LANDING PAGE
+
+
+
+    if (
+
+        tipoProjeto ===
+
+        "Landing Page"
+
+    ) {
+
+
+
+        caixaOpcoes.innerHTML = `
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Captar contatos de clientes">
+
+
+
+                📋 Captar contatos
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Gerar vendas">
+
+
+
+                💰 Gerar vendas
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Divulgar uma campanha">
+
+
+
+                📢 Divulgar campanha
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Levar clientes para o WhatsApp">
+
+
+
+                📱 Levar clientes para o WhatsApp
+
+
+
+            </button>
+
+
+
+        `;
+
+
+
+
+
+        return;
+
+
+
+    }
+
+
+
+
+
+    // AUTOMAÇÃO
+
+
+
+    if (
+
+        tipoProjeto ===
+
+        "Automação"
+
+    ) {
+
+
+
+        caixaOpcoes.innerHTML = `
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Automatizar atendimento">
+
+
+
+                🤖 Automatizar atendimento
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Responder clientes mais rápido">
+
+
+
+                ⚡ Responder clientes mais rápido
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Filtrar e organizar clientes">
+
+
+
+                🎯 Filtrar e organizar clientes
+
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                data-acao="objetivo-site"
+
+                data-valor="Reduzir trabalho manual">
+
+
+
+                ⚙️ Reduzir trabalho manual
+
+
+
+            </button>
+
+
+
+        `;
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// RESPOSTAS NATURAIS
+
+// ==============================
+
+
+
+function gerarConfirmacaoSolucao() {
+
+
+
+    const negocioSeguro =
+
+        escaparHTML(
+
+            tipoNegocio
+
+        );
+
+
+
+
+
+    const solucaoSegura =
+
+        escaparHTML(
+
+            tipoSite
+
+        );
+
+
+
+
+
+    // SITE
+
+
+
+    const respostasSite = [
+
+
+
+        `
+
+        Perfeito! Um
+
+        <strong>${solucaoSegura}</strong>
+
+        pode ajudar bastante a apresentar
+
+        <strong>${negocioSeguro}</strong>
+
+        de forma profissional.
+
+        `,
+
+
+
+        `
+
+        Boa escolha! 👌
+
+
+
+        Um
+
+        <strong>${solucaoSegura}</strong>
+
+        combina muito bem com a presença
+
+        digital de
+
+        <strong>${negocioSeguro}</strong>.
+
+        `,
+
+
+
+        `
+
+        Entendi! 🚀
+
+
+
+        Vamos pensar em um
+
+        <strong>${solucaoSegura}</strong>
+
+        que ajude seu negócio a se destacar
+
+        na internet.
+
+        `
+
+
+
+    ];
+
+
+
+
+
+    // LANDING PAGE
+
+
+
+    const respostasLanding = [
+
+
+
+        `
+
+        Ótima escolha! 🎯
+
+
+
+        Uma
+
+        <strong>${solucaoSegura}</strong>
+
+        pode ser muito eficiente para
+
+        transformar visitantes em
+
+        possíveis clientes.
+
+        `,
+
+
+
+        `
+
+        Perfeito!
+
+
+
+        A ideia da Landing Page
+
+        é ser direta e levar
+
+        o visitante para uma ação
+
+        específica.
+
+        `,
+
+
+
+        `
+
+        Boa! 🔥
+
+
+
+        Vamos pensar nessa Landing Page
+
+        com foco total no resultado
+
+        que você procura.
+
+        `
+
+
+
+    ];
+
+
+
+
+
+    // AUTOMAÇÃO
+
+
+
+    const respostasAutomacao = [
+
+
+
+        `
+
+        Excelente! 🤖
+
+
+
+        Uma
+
+        <strong>${solucaoSegura}</strong>
+
+        pode deixar o atendimento
+
+        mais rápido e organizado.
+
+        `,
+
+
+
+        `
+
+        Boa escolha! ⚡
+
+
+
+        Automatizar esse processo
+
+        pode economizar bastante
+
+        trabalho no dia a dia.
+
+        `,
+
+
+
+        `
+
+        Perfeito!
+
+
+
+        Já consigo imaginar uma automação
+
+        ajudando
+
+        <strong>${negocioSeguro}</strong>
+
+        a atender clientes de forma
+
+        mais eficiente.
+
+        `
+
+
+
+    ];
+
+
+
+
+
+    let respostas =
+
+        respostasSite;
+
+
+
+
+
+    if (
+
+        tipoProjeto ===
+
+        "Landing Page"
+
+    ) {
+
+
+
+        respostas =
+
+            respostasLanding;
+
+
+
+    }
+
+
+
+
+
+    if (
+
+        tipoProjeto ===
+
+        "Automação"
+
+    ) {
+
+
+
+        respostas =
+
+            respostasAutomacao;
+
+
+
+    }
+
+
+
+
+
+    const chaveProjeto =
+
+        Object.prototype
+
+            .hasOwnProperty
+
+            .call(
+
+                ultimaRespostaPorProjeto,
+
+                tipoProjeto
+
+            )
+
+            ? tipoProjeto
+
+            : "Site";
+
+
+
+
+
+    let indice;
+
+
+
+
+
+    // NÃO REPETE A RESPOSTA ANTERIOR
+
+
+
+    do {
+
+
+
+        indice =
+
+            Math.floor(
+
+                Math.random() *
+
+                respostas.length
+
+            );
+
+
+
+    } while (
+
+
+
+        respostas.length > 1 &&
+
+
+
+        indice ===
+
+        ultimaRespostaPorProjeto[
+
+            chaveProjeto
+
+        ]
+
+
+
+    );
+
+
+
+
+
+    ultimaRespostaPorProjeto[
+
+        chaveProjeto
+
+    ] = indice;
+
+
+
+
+
+    return respostas[indice];
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// REINICIAR ASSISTENTE
+
+// ==============================
+
+
+
+function reiniciarAssistente() {
+
+
+
+    esconderProgresso();
+
+
+
+
+
+    tipoProjeto = "";
+
+
+
+    tipoNegocio = "";
+
+
+
+    tipoSite = "";
+
+
+
+    objetivoSite = "";
+
+
+
+    nomeCliente = "";
+
+
+
+    telefoneCliente = "";
+
+
+
+
+
+    mensagensAssistente
+
+        .innerHTML =
+
+        "";
+
+
+
+
+
+    mensagensAssistente
+
+        .appendChild(
+
+            mensagemRobo
+
+        );
+
+
+
+
+
+    mensagemRobo.innerHTML = `
+
+
+
+        👋 Olá! Sou o assistente
+
+        da MD Web Studio.
+
+
+
+        <br><br>
+
+
+
         Como posso te ajudar?
-    </div>
 
-</div>
 
-<div class="assistente-opcoes" id="opcoesAssistente">
 
-    <button data-acao="criar">
-        Quero criar um site
-    </button>
+    `;
 
-    <button data-acao="planos">
-        Conhecer os planos
-    </button>
 
-    <button data-acao="servicos">
-        Ver os serviços
-    </button>
 
-    <button data-acao="contato">
-        Falar com o MD
-    </button>
 
-</div>
 
-        </div>
+    caixaOpcoes.innerHTML = `
 
-    </div>
 
-</div>
 
-    <script src="script.js"></script>
+        <button data-acao="criar">
+
+
+
+            🚀 Quero criar um projeto
+
+
+
+        </button>
+
+
+
+
+
+        <button data-acao="planos">
+
+
+
+            ⭐ Conhecer os planos
+
+
+
+        </button>
+
+
+
+
+
+        <button data-acao="servicos">
+
+
+
+            🌐 Ver os serviços
+
+
+
+        </button>
+
+
+
+
+
+        <button data-acao="contato">
+
+
+
+            💬 Falar com o MD
+
+
+
+        </button>
+
+
+
+    `;
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// CLIQUES NO ASSISTENTE
+
+// ==============================
+
+
+
+caixaOpcoes.addEventListener(
+
+    "click",
+
+    (evento) => {
+
+
+
+        const botao =
+
+            evento.target.closest(
+
+                "button"
+
+            );
+
+
+
+
+
+        if (!botao) {
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        const acao =
+
+            botao.dataset.acao;
+
+
+
+
+
+        // ==========================
+
+        // CRIAR PROJETO
+
+        // ==========================
+
+
+
+        if (
+
+            acao === "criar"
+
+        ) {
+
+
+
+            atualizarProgresso(
+
+                1
+
+            );
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                "Quero criar um projeto"
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            responderComAtraso(`
+
+
+
+                🚀 Bora tirar sua ideia
+
+                do papel!
+
+
+
+                <br><br>
+
+
+
+                O que você gostaria
+
+                de criar?
+
+
+
+            `, () => {
+
+
+
+
+
+                caixaOpcoes.innerHTML = `
+
+
+
+                    <button
+
+                        data-acao="tipo-projeto"
+
+                        data-valor="Site">
+
+
+
+                        🌐 Site profissional
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="tipo-projeto"
+
+                        data-valor="Landing Page">
+
+
+
+                        🎯 Landing Page
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="tipo-projeto"
+
+                        data-valor="Automação">
+
+
+
+                        🤖 Automação
+
+
+
+                    </button>
+
+
+
+                `;
+
+
+
+            });
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // TIPO DE PROJETO
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "tipo-projeto"
+
+        ) {
+
+
+
+            tipoProjeto =
+
+                botao.dataset.valor;
+
+
+
+
+
+            atualizarProgresso(
+
+                2
+
+            );
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                tipoProjeto
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            responderComAtraso(`
+
+
+
+                🔥 Ótima escolha!
+
+
+
+                <br><br>
+
+
+
+                Você escolheu:
+
+
+
+                <strong>
+
+                    ${escaparHTML(
+
+                        tipoProjeto
+
+                    )}
+
+                </strong>.
+
+
+
+                <br><br>
+
+
+
+                Agora me conta:
+
+
+
+                qual é o seu tipo
+
+                de negócio?
+
+
+
+            `, () => {
+
+
+
+
+
+                caixaOpcoes.innerHTML = `
+
+
+
+                    <button
+
+                        data-acao="tipo-negocio"
+
+                        data-valor="Barbearia">
+
+
+
+                        💈 Barbearia
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="tipo-negocio"
+
+                        data-valor="Restaurante">
+
+
+
+                        🍽️ Restaurante
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="tipo-negocio"
+
+                        data-valor="Loja">
+
+
+
+                        🛍️ Loja
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="tipo-negocio"
+
+                        data-valor="Empresa">
+
+
+
+                        🏢 Empresa
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="tipo-negocio"
+
+                        data-valor="Outro">
+
+
+
+                        ✨ Outro
+
+
+
+                    </button>
+
+
+
+                `;
+
+
+
+            });
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // TIPO DE NEGÓCIO
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "tipo-negocio"
+
+        ) {
+
+
+
+            const negocioEscolhido =
+
+                botao.dataset.valor;
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                negocioEscolhido
+
+            );
+
+
+
+
+
+            // OUTRO
+
+
+
+            if (
+
+                negocioEscolhido ===
+
+                "Outro"
+
+            ) {
+
+
+
+                caixaOpcoes.innerHTML =
+
+                    "";
+
+
+
+
+
+                responderComAtraso(`
+
+
+
+                    ✨ Sem problema!
+
+
+
+                    <br><br>
+
+
+
+                    Qual é o seu
+
+                    tipo de negócio?
+
+
+
+                `, () => {
+
+
+
+
+
+                    caixaOpcoes.innerHTML = `
+
+
+
+                        <input
+
+                            type="text"
+
+                            id="negocioPersonalizado"
+
+                            placeholder="Ex: Academia, Clínica, Oficina..."
+
+                            maxlength="60"
+
+                        >
+
+
+
+
+
+                        <button
+
+                            data-acao="salvar-negocio-outro">
+
+
+
+                            CONTINUAR
+
+
+
+                        </button>
+
+
+
+                    `;
+
+
+
+
+
+                    const campoNegocio =
+
+                        document
+
+                            .getElementById(
+
+                                "negocioPersonalizado"
+
+                            );
+
+
+
+
+
+                    if (campoNegocio) {
+
+
+
+                        campoNegocio.focus();
+
+
+
+                    }
+
+
+
+                });
+
+
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            // OPÇÃO PRONTA
+
+
+
+            tipoNegocio =
+
+                negocioEscolhido;
+
+
+
+
+
+            atualizarProgresso(
+
+                3
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            const digitando =
+
+                mostrarDigitando();
+
+
+
+
+
+            setTimeout(() => {
+
+
+
+                digitando.remove();
+
+
+
+
+
+                continuarFluxoProjeto();
+
+
+
+            }, 700);
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // NEGÓCIO PERSONALIZADO
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "salvar-negocio-outro"
+
+        ) {
+
+
+
+            const campoNegocio =
+
+                document.getElementById(
+
+                    "negocioPersonalizado"
+
+                );
+
+
+
+
+
+            if (!campoNegocio) {
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            const textoDigitado =
+
+                campoNegocio
+
+                    .value
+
+                    .trim();
+
+
+
+
+
+            if (
+
+                textoDigitado === ""
+
+            ) {
+
+
+
+                adicionarMensagemRobo(`
+
+
+
+                    ⚠️ Digite o tipo
+
+                    do seu negócio
+
+                    para continuar.
+
+
+
+                `);
+
+
+
+
+
+                campoNegocio.focus();
+
+
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            tipoNegocio =
+
+                textoDigitado;
+
+
+
+
+
+            atualizarProgresso(
+
+                3
+
+            );
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                tipoNegocio
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            const digitando =
+
+                mostrarDigitando();
+
+
+
+
+
+            setTimeout(() => {
+
+
+
+                digitando.remove();
+
+
+
+
+
+                continuarFluxoProjeto();
+
+
+
+            }, 700);
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // TIPO DE SITE / SOLUÇÃO
+
+        // ==========================
+
+
+
+        if (
+
+            acao === "tipo-site"
+
+        ) {
+
+
+
+            tipoSite =
+
+                botao.dataset.valor;
+
+
+
+
+
+            atualizarProgresso(
+
+                4
+
+            );
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                tipoSite
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            const confirmacaoNatural =
+
+                gerarConfirmacaoSolucao();
+
+
+
+
+
+            responderComAtraso(`
+
+
+
+                ${confirmacaoNatural}
+
+
+
+                <br><br>
+
+
+
+                Agora preciso entender
+
+                o principal objetivo
+
+                desse projeto.
+
+
+
+            `, () => {
+
+
+
+
+
+                mostrarObjetivosProjeto();
+
+
+
+            });
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // OBJETIVO DO PROJETO
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "objetivo-site"
+
+        ) {
+
+
+
+            objetivoSite =
+
+                botao.dataset.valor;
+
+
+
+
+
+            atualizarProgresso(
+
+                5
+
+            );
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                objetivoSite
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            const negocioSeguro =
+
+                escaparHTML(
+
+                    tipoNegocio
+
+                );
+
+
+
+
+
+            const projetoSeguro =
+
+                escaparHTML(
+
+                    tipoProjeto
+
+                );
+
+
+
+
+
+            const solucaoSegura =
+
+                escaparHTML(
+
+                    tipoSite
+
+                );
+
+
+
+
+
+            const objetivoSeguro =
+
+                escaparHTML(
+
+                    objetivoSite
+
+                );
+
+
+
+
+
+            responderComAtraso(`
+
+
+
+                ✅ Perfeito!
+
+
+
+                <br><br>
+
+
+
+                Já tenho uma ideia inicial
+
+                do seu projeto.
+
+
+
+                <br><br>
+
+
+
+                🏢 <strong>Negócio:</strong>
+
+                ${negocioSeguro}
+
+
+
+                <br><br>
+
+
+
+                🚀 <strong>Projeto:</strong>
+
+                ${projetoSeguro}
+
+
+
+                <br><br>
+
+
+
+                💻 <strong>Solução:</strong>
+
+                ${solucaoSegura}
+
+
+
+                <br><br>
+
+
+
+                🎯 <strong>Objetivo:</strong>
+
+                ${objetivoSeguro}
+
+
+
+                <br><br>
+
+
+
+                Agora só preciso de algumas
+
+                informações para finalizar.
+
+
+
+            `, () => {
+
+
+
+
+
+                caixaOpcoes.innerHTML = `
+
+
+
+                    <input
+
+                        type="text"
+
+                        id="nomeCliente"
+
+                        placeholder="Digite seu nome"
+
+                        maxlength="50"
+
+                        autocomplete="name"
+
+                    >
+
+
+
+
+
+                    <button
+
+                        data-acao="salvar-nome">
+
+
+
+                        CONTINUAR
+
+
+
+                    </button>
+
+
+
+                `;
+
+
+
+
+
+                const campoNome =
+
+                    document.getElementById(
+
+                        "nomeCliente"
+
+                    );
+
+
+
+
+
+                if (campoNome) {
+
+
+
+                    campoNome.focus();
+
+
+
+                }
+
+
+
+            });
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // NOME DO CLIENTE
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "salvar-nome"
+
+        ) {
+
+
+
+            const campoNome =
+
+                document.getElementById(
+
+                    "nomeCliente"
+
+                );
+
+
+
+
+
+            if (!campoNome) {
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            const nomeDigitado =
+
+                campoNome
+
+                    .value
+
+                    .trim();
+
+
+
+
+
+            if (
+
+                nomeDigitado.length < 2
+
+            ) {
+
+
+
+                adicionarMensagemRobo(`
+
+
+
+                    ⚠️ Digite seu nome
+
+                    para continuar.
+
+
+
+                `);
+
+
+
+
+
+                campoNome.focus();
+
+
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            nomeCliente =
+
+                nomeDigitado;
+
+
+
+
+
+            atualizarProgresso(
+
+                6
+
+            );
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                nomeCliente
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            responderComAtraso(`
+
+
+
+                👋 Prazer,
+
+
+
+                <strong>
+
+                    ${escaparHTML(
+
+                        nomeCliente
+
+                    )}
+
+                </strong>!
+
+
+
+                <br><br>
+
+
+
+                Agora me passa seu WhatsApp
+
+                para montarmos o resumo
+
+                do projeto.
+
+
+
+            `, () => {
+
+
+
+
+
+                caixaOpcoes.innerHTML = `
+
+
+
+                    <input
+
+                        type="tel"
+
+                        id="telefoneCliente"
+
+                        placeholder="Ex: (21) 99999-9999"
+
+                        maxlength="20"
+
+                        autocomplete="tel"
+
+                    >
+
+
+
+
+
+                    <button
+
+                        data-acao="salvar-telefone">
+
+
+
+                        CONTINUAR
+
+
+
+                    </button>
+
+
+
+                `;
+
+
+
+
+
+                const campoTelefone =
+
+                    document
+
+                        .getElementById(
+
+                            "telefoneCliente"
+
+                        );
+
+
+
+
+
+                if (campoTelefone) {
+
+
+
+                    campoTelefone.focus();
+
+
+
+                }
+
+
+
+            });
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // WHATSAPP DO CLIENTE
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "salvar-telefone"
+
+        ) {
+
+
+
+            const campoTelefone =
+
+                document.getElementById(
+
+                    "telefoneCliente"
+
+                );
+
+
+
+
+
+            if (!campoTelefone) {
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            const telefoneDigitado =
+
+                campoTelefone
+
+                    .value
+
+                    .trim();
+
+
+
+
+
+            const somenteNumeros =
+
+                telefoneDigitado
+
+                    .replace(
+
+                        /\D/g,
+
+                        ""
+
+                    );
+
+
+
+
+
+            if (
+
+                somenteNumeros.length < 10 ||
+
+                somenteNumeros.length > 11
+
+            ) {
+
+
+
+                adicionarMensagemRobo(`
+
+
+
+                    ⚠️ Digite um número
+
+                    de WhatsApp válido.
+
+
+
+                    <br><br>
+
+
+
+                    Exemplo:
+
+
+
+                    <strong>
+
+                        (21) 99999-9999
+
+                    </strong>
+
+
+
+                `);
+
+
+
+
+
+                campoTelefone.focus();
+
+
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+            let telefoneFormatado =
+
+                somenteNumeros;
+
+
+
+
+
+            // 11 DÍGITOS
+
+
+
+            if (
+
+                somenteNumeros.length === 11
+
+            ) {
+
+
+
+                telefoneFormatado =
+
+                    somenteNumeros.replace(
+
+                        /^(\d{2})(\d{5})(\d{4})$/,
+
+                        "($1) $2-$3"
+
+                    );
+
+
+
+            }
+
+
+
+
+
+            // 10 DÍGITOS
+
+
+
+            if (
+
+                somenteNumeros.length === 10
+
+            ) {
+
+
+
+                telefoneFormatado =
+
+                    somenteNumeros.replace(
+
+                        /^(\d{2})(\d{4})(\d{4})$/,
+
+                        "($1) $2-$3"
+
+                    );
+
+
+
+            }
+
+
+
+
+
+            telefoneCliente =
+
+                telefoneFormatado;
+
+
+
+
+
+            concluirProgresso();
+
+
+
+
+
+            adicionarMensagemCliente(
+
+                telefoneCliente
+
+            );
+
+
+
+
+
+            caixaOpcoes.innerHTML =
+
+                "";
+
+
+
+
+
+            responderComAtraso(`
+
+
+
+                ✅ Tudo certo!
+
+
+
+                <br><br>
+
+
+
+                <strong>
+
+                    Resumo do seu projeto:
+
+                </strong>
+
+
+
+                <br><br>
+
+
+
+                👤 <strong>Nome:</strong>
+
+                ${escaparHTML(
+
+                    nomeCliente
+
+                )}
+
+
+
+                <br>
+
+
+
+                🏢 <strong>Negócio:</strong>
+
+                ${escaparHTML(
+
+                    tipoNegocio
+
+                )}
+
+
+
+                <br>
+
+
+
+                🚀 <strong>Projeto:</strong>
+
+                ${escaparHTML(
+
+                    tipoProjeto
+
+                )}
+
+
+
+                <br>
+
+
+
+                💻 <strong>Solução:</strong>
+
+                ${escaparHTML(
+
+                    tipoSite
+
+                )}
+
+
+
+                <br>
+
+
+
+                🎯 <strong>Objetivo:</strong>
+
+                ${escaparHTML(
+
+                    objetivoSite
+
+                )}
+
+
+
+                <br>
+
+
+
+                📱 <strong>WhatsApp:</strong>
+
+                ${escaparHTML(
+
+                    telefoneCliente
+
+                )}
+
+
+
+            `, () => {
+
+
+
+
+
+                caixaOpcoes.innerHTML = `
+
+
+
+                    <button
+
+                        data-acao="finalizar">
+
+
+
+                        💬 Enviar projeto
+
+                        para o MD
+
+
+
+                    </button>
+
+
+
+
+
+                    <button
+
+                        data-acao="reiniciar">
+
+
+
+                        ↻ Começar novamente
+
+
+
+                    </button>
+
+
+
+                `;
+
+
+
+            });
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // ENVIAR PARA WHATSAPP
+
+        // ==========================
+
+
+
+       if (
+
+    acao ===
+
+    "finalizar"
+
+) {
+
+    if (botao.disabled) {
+        return;
+    }
+
+    botao.disabled = true;
+    botao.style.opacity = "0.6";
+    botao.style.cursor = "not-allowed";
+
+
+    const numeroWhatsApp =
+
+        "5521990487662";
+
+
+
+
+
+            const mensagem = `Olá! Vim pelo site da MD Web Studio.
+
+
+
+👤 Nome: ${nomeCliente}
+
+📱 WhatsApp: ${telefoneCliente}
+
+
+
+🏢 Negócio: ${tipoNegocio}
+
+🚀 Projeto: ${tipoProjeto}
+
+💻 Solução: ${tipoSite}
+
+🎯 Objetivo: ${objetivoSite}
+
+
+
+Gostaria de conversar sobre o meu projeto.`;
+
+
+
+
+
+            const mensagemCodificada =
+
+                encodeURIComponent(
+
+                    mensagem
+
+                );
+
+
+
+
+
+            const linkWhatsApp =
+
+                `https\://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+
+
+
+
+            window.open(
+
+                linkWhatsApp,
+
+                "_blank"
+
+            );
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // REINICIAR
+
+        // ==========================
+
+
+
+        if (
+
+            acao ===
+
+            "reiniciar"
+
+        ) {
+
+
+
+            reiniciarAssistente();
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // PLANOS
+
+        // ==========================
+
+
+
+        if (
+
+            acao === "planos"
+
+        ) {
+
+
+
+            adicionarMensagemCliente(
+
+                "Conhecer os planos"
+
+            );
+
+
+
+
+
+            adicionarMensagemRobo(`
+
+
+
+                ⭐ Temos opções
+
+                para diferentes
+
+                tipos de projetos.
+
+
+
+                <br><br>
+
+
+
+                Vou te mostrar
+
+                nossos planos.
+
+
+
+            `);
+
+
+
+
+
+            const secaoPlanos =
+
+                document.getElementById(
+
+                    "planos"
+
+                );
+
+
+
+
+
+            if (secaoPlanos) {
+
+
+
+                secaoPlanos
+
+                    .scrollIntoView({
+
+
+
+                        behavior:
+
+                            "smooth"
+
+
+
+                    });
+
+
+
+            }
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // SERVIÇOS
+
+        // ==========================
+
+
+
+        if (
+
+            acao === "servicos"
+
+        ) {
+
+
+
+            adicionarMensagemCliente(
+
+                "Ver os serviços"
+
+            );
+
+
+
+
+
+            adicionarMensagemRobo(`
+
+
+
+                🌐 Claro!
+
+
+
+                <br><br>
+
+
+
+                Vou te mostrar
+
+                o que a MD Web Studio
+
+                pode fazer pelo
+
+                seu negócio.
+
+
+
+            `);
+
+
+
+
+
+            const secaoServicos =
+
+                document.getElementById(
+
+                    "servicos"
+
+                );
+
+
+
+
+
+            if (secaoServicos) {
+
+
+
+                secaoServicos
+
+                    .scrollIntoView({
+
+
+
+                        behavior:
+
+                            "smooth"
+
+
+
+                    });
+
+
+
+            }
+
+
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        // ==========================
+
+        // CONTATO
+
+        // ==========================
+
+
+
+        if (
+
+            acao === "contato"
+
+        ) {
+
+
+
+            adicionarMensagemCliente(
+
+                "Falar com o MD"
+
+            );
+
+
+
+
+
+            adicionarMensagemRobo(`
+
+
+
+                💬 Perfeito!
+
+
+
+                <br><br>
+
+
+
+                Vou te levar até
+
+                nossa área de contato.
+
+
+
+            `);
+
+
+
+
+
+            const secaoContato =
+
+                document.getElementById(
+
+                    "contato"
+
+                );
+
+
+
+
+
+            if (secaoContato) {
+
+
+
+                secaoContato
+
+                    .scrollIntoView({
+
+
+
+                        behavior:
+
+                            "smooth"
+
+
+
+                    });
+
+
+
+            }
+
+
+
+        }
+
+
+
+    }
+
+);
+
+
+
+
+
+// ==============================
+
+// ENTER NOS CAMPOS
+
+// ==============================
+
+
+
+document.addEventListener(
+
+    "keydown",
+
+    (evento) => {
+
+
+
+        if (
+
+            evento.key !== "Enter"
+
+        ) {
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        let seletorBotao =
+
+            "";
+
+
+
+
+
+        // NEGÓCIO PERSONALIZADO
+
+
+
+        if (
+
+            evento.target.id ===
+
+            "negocioPersonalizado"
+
+        ) {
+
+
+
+            seletorBotao =
+
+                '[data-acao="salvar-negocio-outro"]';
+
+
+
+        }
+
+
+
+
+
+        // NOME
+
+
+
+        if (
+
+            evento.target.id ===
+
+            "nomeCliente"
+
+        ) {
+
+
+
+            seletorBotao =
+
+                '[data-acao="salvar-nome"]';
+
+
+
+        }
+
+
+
+
+
+        // WHATSAPP
+
+
+
+        if (
+
+            evento.target.id ===
+
+            "telefoneCliente"
+
+        ) {
+
+
+
+            seletorBotao =
+
+                '[data-acao="salvar-telefone"]';
+
+
+
+        }
+
+
+
+
+
+        if (!seletorBotao) {
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        evento.preventDefault();
+
+
+
+
+
+        const botao =
+
+            document.querySelector(
+
+                seletorBotao
+
+            );
+
+
+
+
+
+        if (botao) {
+
+
+
+            botao.click();
+
+
+
+        }
+
+
+
+    }
+
+);
+
+
+
+
+
+// ==============================
+
+// MÁSCARA DO WHATSAPP
+
+// ==============================
+
+
+
+caixaOpcoes.addEventListener(
+
+    "input",
+
+    (evento) => {
+
+
+
+        if (
+
+            evento.target.id !==
+
+            "telefoneCliente"
+
+        ) {
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        let numero =
+
+            evento.target
+
+                .value
+
+                .replace(
+
+                    /\D/g,
+
+                    ""
+
+                );
+
+
+
+
+
+        numero =
+
+            numero.slice(
+
+                0,
+
+                11
+
+            );
+
+
+
+
+
+        // 11 DÍGITOS
+
+
+
+        if (
+
+            numero.length > 10
+
+        ) {
+
+
+
+            numero =
+
+                numero.replace(
+
+                    /^(\d{2})(\d{5})(\d{4})$/,
+
+                    "($1) $2-$3"
+
+                );
+
+
+
+        }
+
+
+
+
+
+        // 7 A 10 DÍGITOS
+
+
+
+        else if (
+
+            numero.length > 6
+
+        ) {
+
+
+
+            numero =
+
+                numero.replace(
+
+                    /^(\d{2})(\d{4})(\d{0,4})$/,
+
+                    "($1) $2-$3"
+
+                );
+
+
+
+        }
+
+
+
+
+
+        // 3 A 6 DÍGITOS
+
+
+
+        else if (
+
+            numero.length > 2
+
+        ) {
+
+
+
+            numero =
+
+                numero.replace(
+
+                    /^(\d{2})(\d+)/,
+
+                    "($1) $2"
+
+                );
+
+
+
+        }
+
+
+
+
+
+        // 1 A 2 DÍGITOS
+
+
+
+        else if (
+
+            numero.length > 0
+
+        ) {
+
+
+
+            numero =
+
+                numero.replace(
+
+                    /^(\d{0,2})/,
+
+                    "($1"
+
+                );
+
+
+
+        }
+
+
+
+
+
+        evento.target.value =
+
+            numero;
+
+
+
+    }
+
+);
+
+
+
+
+
+// ==============================
+
+// HERO 3D
+
+// ==============================
+
+
+
+const areaInicio =
+
+    document.querySelector(
+
+        ".inicio"
+
+    );
+
+
+
+const cena3D =
+
+    document.querySelector(
+
+        ".cena-3d"
+
+    );
+
+
+
+
+
+if (
+
+    areaInicio &&
+
+    cena3D
+
+) {
+
+
+
+    areaInicio.addEventListener(
+
+        "mousemove",
+
+        (evento) => {
+
+
+
+            const largura =
+
+                areaInicio.clientWidth;
+
+
+
+
+
+            const altura =
+
+                areaInicio.clientHeight;
+
+
+
+
+
+            const mouseX =
+
+                evento.clientX /
+
+                largura -
+
+                0.5;
+
+
+
+
+
+            const mouseY =
+
+                evento.clientY /
+
+                altura -
+
+                0.5;
+
+
+
+
+
+            const moverX =
+
+                mouseX * 35;
+
+
+
+
+
+            const moverY =
+
+                mouseY * 25;
+
+
+
+
+
+            const girarX =
+
+                mouseY * -8;
+
+
+
+
+
+            const girarY =
+
+                mouseX * 8;
+
+
+
+
+
+            cena3D.style.transform = `
+
+
+
+                translate(-50%, -50%)
+
+
+
+                translate(
+
+                    ${moverX}px,
+
+                    ${moverY - 20}px
+
+                )
+
+
+
+                rotateX(
+
+                    ${girarX}deg
+
+                )
+
+
+
+                rotateY(
+
+                    ${girarY}deg
+
+                )
+
+
+
+            `;
+
+
+
+        }
+
+    );
+
+
+
+
+
+    areaInicio.addEventListener(
+
+        "mouseleave",
+
+        () => {
+
+
+
+            cena3D.style.transform = `
+
+
+
+                translate(-50%, -50%)
+
+
+
+                translateY(-20px)
+
+
+
+                rotateX(0deg)
+
+
+
+                rotateY(0deg)
+
+
+
+            `;
+
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// CARDS 3D
+
+// SERVIÇOS E PLANOS
+
+// ==============================
+
+
+
+const cards3D =
+
+    document.querySelectorAll(
+
+        ".servico, .plano"
+
+    );
+
+
+
+
+
+const dispositivoComMouse =
+
+    window.matchMedia(
+
+        "(hover: hover) and (pointer: fine)"
+
+    );
+
+
+
+
+
+if (
+
+    dispositivoComMouse.matches
+
+) {
+
+
+
+    cards3D.forEach(
+
+        (card) => {
+
+
+
+            card.addEventListener(
+
+                "mousemove",
+
+                (evento) => {
+
+
+
+                    const area =
+
+                        card
+
+                            .getBoundingClientRect();
+
+
+
+
+
+                    const mouseX =
+
+                        evento.clientX -
+
+                        area.left;
+
+
+
+
+
+                    const mouseY =
+
+                        evento.clientY -
+
+                        area.top;
+
+
+
+
+
+                    const percentualX =
+
+                        mouseX /
+
+                        area.width;
+
+
+
+
+
+                    const percentualY =
+
+                        mouseY /
+
+                        area.height;
+
+
+
+
+
+                    const girarY =
+
+                        (
+
+                            percentualX -
+
+                            0.5
+
+                        ) * 14;
+
+
+
+
+
+                    const girarX =
+
+                        (
+
+                            percentualY -
+
+                            0.5
+
+                        ) * -14;
+
+
+
+
+
+                    card.style.transform = `
+
+
+
+                        perspective(900px)
+
+
+
+                        rotateX(
+
+                            ${girarX}deg
+
+                        )
+
+
+
+                        rotateY(
+
+                            ${girarY}deg
+
+                        )
+
+
+
+                        translateY(-6px)
+
+
+
+                        scale(1.02)
+
+
+
+                    `;
+
+
+
+
+
+                    card.style.setProperty(
+
+                        "--mouse-x",
+
+                        `${percentualX * 100}%`
+
+                    );
+
+
+
+
+
+                    card.style.setProperty(
+
+                        "--mouse-y",
+
+                        `${percentualY * 100}%`
+
+                    );
+
+
+
+                }
+
+            );
+
+
+
+
+
+            card.addEventListener(
+
+                "mouseleave",
+
+                () => {
+
+
+
+                    card.style.transform =
+
+                        "";
+
+
+
+
+
+                    card.style.setProperty(
+
+                        "--mouse-x",
+
+                        "50%"
+
+                    );
+
+
+
+
+
+                    card.style.setProperty(
+
+                        "--mouse-y",
+
+                        "50%"
+
+                    );
+
+
+
+                }
+
+            );
+
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// PORTFÓLIO — CARD 3D
+
+// ==============================
+
+
+
+const projetoPortfolio =
+
+    document.querySelector(
+
+        ".projeto"
+
+    );
+
+
+
+
+
+const podeUsarHoverPortfolio =
+
+    window.matchMedia(
+
+        "(hover: hover) and (pointer: fine)"
+
+    );
+
+
+
+
+
+if (
+
+    projetoPortfolio &&
+
+    podeUsarHoverPortfolio.matches
+
+) {
+
+
+
+    projetoPortfolio
+
+        .addEventListener(
+
+            "mousemove",
+
+            (evento) => {
+
+
+
+                const area =
+
+                    projetoPortfolio
+
+                        .getBoundingClientRect();
+
+
+
+
+
+                const mouseX =
+
+                    evento.clientX -
+
+                    area.left;
+
+
+
+
+
+                const mouseY =
+
+                    evento.clientY -
+
+                    area.top;
+
+
+
+
+
+                const percentualX =
+
+                    mouseX /
+
+                    area.width;
+
+
+
+
+
+                const percentualY =
+
+                    mouseY /
+
+                    area.height;
+
+
+
+
+
+                const girarY =
+
+                    (
+
+                        percentualX -
+
+                        0.5
+
+                    ) * 8;
+
+
+
+
+
+                const girarX =
+
+                    (
+
+                        percentualY -
+
+                        0.5
+
+                    ) * -8;
+
+
+
+
+
+                projetoPortfolio
+
+                    .style
+
+                    .transform = `
+
+
+
+                        perspective(1200px)
+
+
+
+                        rotateX(
+
+                            ${girarX}deg
+
+                        )
+
+
+
+                        rotateY(
+
+                            ${girarY}deg
+
+                        )
+
+
+
+                        translateY(-6px)
+
+
+
+                        scale(1.01)
+
+
+
+                    `;
+
+
+
+
+
+                projetoPortfolio
+
+                    .style
+
+                    .setProperty(
+
+                        "--portfolio-x",
+
+                        `${percentualX * 100}%`
+
+                    );
+
+
+
+
+
+                projetoPortfolio
+
+                    .style
+
+                    .setProperty(
+
+                        "--portfolio-y",
+
+                        `${percentualY * 100}%`
+
+                    );
+
+
+
+            }
+
+        );
+
+
+
+
+
+    projetoPortfolio
+
+        .addEventListener(
+
+            "mouseleave",
+
+            () => {
+
+
+
+                projetoPortfolio
+
+                    .style
+
+                    .transform =
+
+                    "";
+
+
+
+
+
+                projetoPortfolio
+
+                    .style
+
+                    .setProperty(
+
+                        "--portfolio-x",
+
+                        "50%"
+
+                    );
+
+
+
+
+
+                projetoPortfolio
+
+                    .style
+
+                    .setProperty(
+
+                        "--portfolio-y",
+
+                        "50%"
+
+                    );
+
+
+
+            }
+
+        );
+
+
+
+}
+
+
+
+// ==============================
+
+// REINICIAR PELO CABEÇALHO
+
+// ==============================
+
+
+
+if (reiniciarAssistenteTopo) {
+
+
+
+    reiniciarAssistenteTopo.addEventListener(
+
+        "click",
+
+        () => {
+
+
+
+            reiniciarAssistente();
+
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+
+
+// ==============================
+
+// FECHAR ASSISTENTE COM ESC
+
+// OU CLICANDO FORA
+
+// ==============================
+
+
+
+function fecharAssistenteMD() {
+
+
+
+    if (
+
+        !janelaAssistente ||
+
+        !botaoAssistente
+
+    ) {
+
+        return;
+
+    }
+
+
+
+
+
+    janelaAssistente
+
+        .classList
+
+        .remove("aberta");
+
+
+
+
+
+    botaoAssistente
+
+        .classList
+
+        .remove("ativo");
+
+
+
+}
+
+
+
+
+
+// ==============================
+
+// FECHAR COM ESC
+
+// ==============================
+
+
+
+document.addEventListener(
+
+    "keydown",
+
+    (evento) => {
+
+
+
+        if (
+
+            evento.key === "Escape" &&
+
+            janelaAssistente
+
+                .classList
+
+                .contains("aberta")
+
+        ) {
+
+
+
+            fecharAssistenteMD();
+
+
+
+        }
+
+
+
+    }
+
+);
+
+
+
+
+
+// ==============================
+
+// FECHAR CLICANDO FORA
+
+// ==============================
+
+
+
+document.addEventListener(
+
+    "click",
+
+    (evento) => {
+
+
+
+        if (
+
+            !janelaAssistente
+
+                .classList
+
+                .contains("aberta")
+
+        ) {
+
+
+
+            return;
+
+
+
+        }
+
+
+
+
+
+        const clicouDentroDoChat =
+
+            janelaAssistente.contains(
+
+                evento.target
+
+            );
+
+
+
+
+
+        const clicouNoBotaoMD =
+
+            botaoAssistente.contains(
+
+                evento.target
+
+            );
+
+
+
+
+
+        if (
+
+            !clicouDentroDoChat &&
+
+            !clicouNoBotaoMD
+
+        ) {
+
+
+
+            fecharAssistenteMD();
+
+
+
+        }
+
+
+
+    }
+
+);
+
+
+// ==============================
+// CORREÇÃO DO BOTÃO X
+// ==============================
+
+const fecharAssistenteFix =
+    document.getElementById("fecharAssistente");
+
+const janelaAssistenteFix =
+    document.getElementById("janelaAssistente");
+
+const botaoAssistenteFix =
+    document.getElementById("abrirAssistente");
+
+
+if (
+    fecharAssistenteFix &&
+    janelaAssistenteFix
+) {
+
+    fecharAssistenteFix.addEventListener(
+        "click",
+        (evento) => {
+
+            evento.preventDefault();
+            evento.stopPropagation();
+
+            janelaAssistenteFix
+                .classList
+                .remove("aberta");
+
+            if (botaoAssistenteFix) {
+
+                botaoAssistenteFix
+                    .classList
+                    .remove("ativo");
+
+            }
+
+        }
+    );
+
+}
+
+</script>
+
+
 
 </body>
 
