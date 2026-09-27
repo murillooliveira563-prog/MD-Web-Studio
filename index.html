@@ -10,12 +10,41 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
 <meta
 
     name="referrer"
 
     content="strict-origin-when-cross-origin"
 
+><!-- IMAGEM DE COMPARTILHAMENTO -->
+
+<meta
+    property="og:image"
+    content="https://murillooliveira563-prog.github.io/MD-Web-Studio/img/preview-md.png"
+>
+
+<meta
+    property="og:image:width"
+    content="1200"
+>
+
+<meta
+    property="og:image:height"
+    content="630"
+>
+
+<meta
+    property="og:image:alt"
+    content="MD Web Studio — Sites que não passam despercebidos"
+>
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta
+    name="twitter:image"
+    content="https://murillooliveira563-prog.github.io/MD-Web-Studio/img/preview-md.png"
 >
 
 
@@ -23,6 +52,79 @@
     <title>MD Web Studio | Criação de Sites</title>
 
 
+    <!-- =========================================
+     MD WEB STUDIO — SEO E IDENTIDADE
+========================================== -->
+
+<meta
+    name="description"
+    content="MD Web Studio — sites profissionais, personalizados e responsivos para negócios que querem construir uma presença digital com identidade."
+>
+
+<meta
+    name="theme-color"
+    content="#080808"
+>
+
+<link
+    rel="canonical"
+    href="https://murillooliveira563-prog.github.io/MD-Web-Studio/"
+>
+
+
+<!-- FAVICON MD -->
+
+<link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080808'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial' font-size='22' font-weight='900' fill='%23d4af37'%3EMD%3C/text%3E%3C/svg%3E"
+>
+
+
+<!-- PREVIEW PARA WHATSAPP / REDES SOCIAIS -->
+
+<meta
+    property="og:type"
+    content="website"
+>
+
+<meta
+    property="og:locale"
+    content="pt_BR"
+>
+
+<meta
+    property="og:site_name"
+    content="MD Web Studio"
+>
+
+<meta
+    property="og:title"
+    content="MD Web Studio | Presença digital com identidade"
+>
+
+<meta
+    property="og:description"
+    content="Sites profissionais e personalizados para negócios que não querem parecer iguais a todo mundo."
+>
+
+<meta
+    property="og:url"
+    content="https://murillooliveira563-prog.github.io/MD-Web-Studio/"
+>
+
+
+<!-- PREVIEW PARA X / OUTRAS PLATAFORMAS -->
+
+<meta
+    name="twitter:title"
+    content="MD Web Studio | Presença digital com identidade"
+>
+
+<meta
+    name="twitter:description"
+    content="Sites profissionais e personalizados para negócios que não querem parecer iguais a todo mundo."
+>
 
    <style>
 /* ==============================
@@ -8017,6 +8119,478 @@ footer p {
 
 }
 
+/* =========================================
+   MD WEB STUDIO — ANIMAÇÃO EDITORIAL HOME
+========================================= */
+
+/* Só esconde os elementos quando o JS confirmar
+   que as animações estão disponíveis */
+html.md-motion #inicio .hero-topo,
+html.md-motion #inicio .hero-kicker,
+html.md-motion #inicio .hero-titulo span,
+html.md-motion #inicio .hero-texto,
+html.md-motion #inicio .hero-links,
+html.md-motion #inicio .hero-scroll,
+html.md-motion #inicio .cena-3d {
+    opacity: 0;
+}
+
+html.md-motion #inicio .hero-topo {
+    transform: translateY(-18px);
+}
+
+html.md-motion #inicio .hero-kicker,
+html.md-motion #inicio .hero-texto,
+html.md-motion #inicio .hero-links,
+html.md-motion #inicio .hero-scroll {
+    transform: translateY(22px);
+}
+
+html.md-motion #inicio .hero-titulo span {
+    transform: translateY(45px);
+}
+
+html.md-motion #inicio .cena-3d {
+    transform: translateY(30px) scale(.96);
+}
+
+
+/* QUANDO A HOME É ATIVADA */
+
+html.md-motion #inicio.md-home-visivel .hero-topo,
+html.md-motion #inicio.md-home-visivel .hero-kicker,
+html.md-motion #inicio.md-home-visivel .hero-titulo span,
+html.md-motion #inicio.md-home-visivel .hero-texto,
+html.md-motion #inicio.md-home-visivel .hero-links,
+html.md-motion #inicio.md-home-visivel .hero-scroll,
+html.md-motion #inicio.md-home-visivel .cena-3d {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* TEMPOS */
+
+#inicio .hero-topo {
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+#inicio .hero-kicker {
+    transition:
+        opacity .7s ease .12s,
+        transform .7s ease .12s;
+}
+
+#inicio .hero-titulo span {
+    display: block;
+    transition:
+        opacity .85s cubic-bezier(.2,.7,.2,1),
+        transform .85s cubic-bezier(.2,.7,.2,1);
+}
+
+#inicio .hero-titulo span:nth-child(1) {
+    transition-delay: .18s;
+}
+
+#inicio .hero-titulo span:nth-child(2) {
+    transition-delay: .28s;
+}
+
+#inicio .hero-titulo span:nth-child(3) {
+    transition-delay: .38s;
+}
+
+#inicio .hero-texto {
+    transition:
+        opacity .75s ease .48s,
+        transform .75s ease .48s;
+}
+
+#inicio .hero-links {
+    transition:
+        opacity .75s ease .56s,
+        transform .75s ease .56s;
+}
+
+#inicio .hero-scroll {
+    transition:
+        opacity .75s ease .7s,
+        transform .75s ease .7s;
+}
+
+#inicio .cena-3d {
+    transition:
+        opacity 1.1s ease .35s,
+        transform 1.1s cubic-bezier(.2,.7,.2,1) .35s;
+}
+
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #inicio *,
+    #inicio *::before,
+    #inicio *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+
+}
+
+/* =========================================
+   MD WEB STUDIO — PORTFÓLIO / REVEAL AUTORAL
+========================================= */
+
+/* Só prepara a animação quando o JS estiver ativo */
+html.md-portfolio-motion
+#portfolio .case-editorial-imagem-principal {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: scale(1.025);
+}
+
+html.md-portfolio-motion
+#portfolio .case-editorial-secundaria {
+    opacity: 0;
+    transform: translateY(28px);
+}
+
+
+/* QUANDO ENTRA NA TELA */
+
+html.md-portfolio-motion
+#portfolio.md-case-visivel
+.case-editorial-imagem-principal {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+}
+
+html.md-portfolio-motion
+#portfolio.md-case-visivel
+.case-editorial-secundaria {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* TEMPOS DIFERENTES */
+
+#portfolio .case-editorial-imagem-principal {
+    transition:
+        clip-path 1.05s cubic-bezier(.22,.7,.2,1),
+        transform 1.2s cubic-bezier(.22,.7,.2,1),
+        opacity .4s ease;
+}
+
+#portfolio .case-editorial-secundaria {
+    transition:
+        opacity .8s ease .35s,
+        transform .9s cubic-bezier(.22,.7,.2,1) .35s;
+}
+
+
+/* HOVER DA IMAGEM PRINCIPAL — DESKTOP */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #portfolio .case-editorial-imagem-principal {
+        overflow: hidden;
+    }
+
+    #portfolio .case-editorial-imagem-principal img {
+        transition:
+            transform .9s cubic-bezier(.22,.7,.2,1),
+            filter .6s ease;
+    }
+
+    #portfolio .case-editorial-imagem-principal:hover img {
+        transform: scale(1.018);
+    }
+
+    #portfolio .case-editorial-imagem-principal:hover
+    .case-editorial-tag {
+        color: #d4af37;
+    }
+
+}
+
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #portfolio .case-editorial-imagem-principal,
+    #portfolio .case-editorial-secundaria,
+    #portfolio .case-editorial-imagem-principal img {
+        transition-duration: .01ms !important;
+    }
+
+}
+
+/* =========================================
+   MD WEB STUDIO — SERVIÇOS / INTERAÇÃO
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #servicos .servico-linha {
+        --servico-x: 50%;
+    }
+
+    #servicos .servico-linha::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background:
+            radial-gradient(
+                circle 180px at var(--servico-x) 50%,
+                rgba(212,175,55,.075),
+                transparent 72%
+            );
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+            opacity .3s ease;
+
+        z-index: 1;
+    }
+
+    #servicos .servico-linha:hover::after {
+        opacity: 1;
+    }
+
+}
+
+/* =========================================
+   MD WEB STUDIO — PLANOS / FOCO EDITORIAL
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #planos .plano-faixa {
+        transition:
+            opacity .35s ease,
+            padding-left .35s ease,
+            background .35s ease;
+    }
+
+    #planos .planos-editorial-lista:hover
+    .plano-faixa {
+        opacity: .42;
+    }
+
+    #planos .planos-editorial-lista
+    .plano-faixa:hover {
+        opacity: 1;
+    }
+
+    #planos .plano-faixa:hover
+    .plano-faixa-principal h3 {
+        color: #d4af37;
+    }
+
+    #planos .plano-faixa:hover
+    .plano-faixa-itens li {
+        color: #c7c7c7;
+    }
+
+    #planos .plano-faixa:hover
+    .plano-faixa-link span {
+        transform: rotate(45deg);
+        border-color: rgba(212,175,55,.7);
+    }
+
+}
+
+/* =========================================
+   MD WEB STUDIO — CURSOR DO CASE
+========================================= */
+
+.case-cursor {
+    position: fixed;
+
+    width: 92px;
+    height: 92px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #d4af37;
+    color: #080808;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.75);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+
+    mix-blend-mode: normal;
+}
+
+.case-cursor.ativo {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    #portfolio .case-editorial-imagem-principal {
+        cursor: none;
+    }
+
+}
+
+
+@media (hover: none), (pointer: coarse) {
+
+    .case-cursor {
+        display: none;
+    }
+
+}
+
+/* =========================================
+   MD WEB STUDIO — SOBRE / NUMERAÇÃO EDITORIAL
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #sobre .sobre-processo-item {
+        overflow: hidden;
+    }
+
+    #sobre .sobre-processo-item > span,
+    #sobre .sobre-processo-item > div {
+        position: relative;
+        z-index: 2;
+    }
+
+    #sobre .sobre-processo-item::after {
+        position: absolute;
+
+        right: 3%;
+        top: 50%;
+
+        transform:
+            translateY(-50%)
+            translateX(25px);
+
+        color: rgba(212,175,55,.055);
+
+        font-size: clamp(80px, 9vw, 150px);
+        font-weight: 900;
+
+        line-height: 1;
+        letter-spacing: -.06em;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+            opacity .35s ease,
+            transform .45s cubic-bezier(.2,.7,.2,1);
+    }
+
+    #sobre .sobre-processo-item:nth-child(1)::after {
+        content: "01";
+    }
+
+    #sobre .sobre-processo-item:nth-child(2)::after {
+        content: "02";
+    }
+
+    #sobre .sobre-processo-item:nth-child(3)::after {
+        content: "03";
+    }
+
+    #sobre .sobre-processo-item:hover::after {
+        opacity: 1;
+
+        transform:
+            translateY(-50%)
+            translateX(0);
+    }
+
+}
+
+/* =========================================
+   MD WEB STUDIO — CONTATO / INTERAÇÃO FINAL
+========================================= */
+
+#contato.contato-editorial::before {
+    transition:
+        transform .7s cubic-bezier(.2,.7,.2,1),
+        color .4s ease;
+}
+
+#contato .contato-link {
+    position: relative;
+    overflow: hidden;
+}
+
+#contato .contato-link::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 0;
+    height: 1px;
+
+    background: #d4af37;
+
+    transition:
+        width .55s cubic-bezier(.2,.7,.2,1);
+}
+
+#contato .contato-link:hover::before {
+    width: 100%;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    #contato.contato-editorial:has(.contato-link:hover)::before {
+        transform:
+            translateX(28px);
+
+        color:
+            rgba(212,175,55,.035);
+    }
+
+}
+
 </style>
 
 </head>
@@ -15693,6 +16267,191 @@ if (janelaAssistente) {
             // Impede que cliques dentro do robô
             // sejam interpretados como clique fora
             evento.stopPropagation();
+
+        }
+    );
+
+}
+
+// =========================================
+// MD WEB STUDIO — ANIMAÇÃO EDITORIAL HOME
+// =========================================
+
+const homeEditorial = document.getElementById("inicio");
+
+if (homeEditorial) {
+
+    document.documentElement.classList.add("md-motion");
+
+    requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+
+            homeEditorial.classList.add(
+                "md-home-visivel"
+            );
+
+        });
+
+    });
+
+}
+
+// =========================================
+// MD WEB STUDIO — REVEAL DO PORTFÓLIO
+// =========================================
+
+const portfolioEditorial =
+    document.getElementById("portfolio");
+
+const gatilhoPortfolio =
+    document.querySelector(
+        "#portfolio .case-editorial-titulo"
+    );
+
+if (portfolioEditorial && gatilhoPortfolio) {
+
+    document.documentElement
+        .classList
+        .add("md-portfolio-motion");
+
+    const observadorPortfolio =
+        new IntersectionObserver(
+            (entradas, observador) => {
+
+                entradas.forEach((entrada) => {
+
+                    if (!entrada.isIntersecting) {
+                        return;
+                    }
+
+                    portfolioEditorial
+                        .classList
+                        .add("md-case-visivel");
+
+                    observador.unobserve(
+                        gatilhoPortfolio
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.35,
+                rootMargin: "0px 0px -15% 0px"
+            }
+        );
+
+    observadorPortfolio.observe(
+        gatilhoPortfolio
+    );
+
+}
+
+// =========================================
+// MD WEB STUDIO — INTERAÇÃO DOS SERVIÇOS
+// =========================================
+
+const linhasServicos =
+    document.querySelectorAll(
+        "#servicos .servico-linha"
+    );
+
+const mouseServicos =
+    window.matchMedia(
+        "(hover: hover) and (pointer: fine)"
+    );
+
+if (mouseServicos.matches) {
+
+    linhasServicos.forEach((linha) => {
+
+        linha.addEventListener(
+            "mousemove",
+            (evento) => {
+
+                const area =
+                    linha.getBoundingClientRect();
+
+                const posicao =
+                    evento.clientX - area.left;
+
+                linha.style.setProperty(
+                    "--servico-x",
+                    `${posicao}px`
+                );
+
+            }
+        );
+
+    });
+
+
+}
+
+// =========================================
+// MD WEB STUDIO — CURSOR DO PORTFÓLIO
+// =========================================
+
+const imagemCase =
+    document.querySelector(
+        "#portfolio .case-editorial-imagem-principal"
+    );
+
+const podeUsarCursorCase =
+    window.matchMedia(
+        "(hover: hover) and (pointer: fine)"
+    );
+
+if (imagemCase && podeUsarCursorCase.matches) {
+
+    const cursorCase =
+        document.createElement("div");
+
+    cursorCase.className =
+        "case-cursor";
+
+    cursorCase.textContent =
+        "CASE 01 ↗";
+
+    document.body.appendChild(
+        cursorCase
+    );
+
+
+    imagemCase.addEventListener(
+        "mouseenter",
+        () => {
+
+            cursorCase.classList.add(
+                "ativo"
+            );
+
+        }
+    );
+
+
+    imagemCase.addEventListener(
+        "mousemove",
+        (evento) => {
+
+            cursorCase.style.left =
+                `${evento.clientX}px`;
+
+            cursorCase.style.top =
+                `${evento.clientY}px`;
+
+        }
+    );
+
+
+    imagemCase.addEventListener(
+        "mouseleave",
+        () => {
+
+            cursorCase.classList.remove(
+                "ativo"
+            );
 
         }
     );
